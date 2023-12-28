@@ -13,33 +13,37 @@ body {
 li {
   list-style: none;
 }
-
 a {
   text-decoration: none;
   color: white;
 }
-
 .nav {
-position: absolute;
-
+  position: absolute;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 8vh;
-  width: 100vw;
+  width: 100%;
   background: rgb(0, 33, 65);
-  max-width: 100%;
+  padding: 0 10px;
 }
 .nav__brand {
   text-transform: uppercase;
   font-weight: bold;
 }
-
 .nav__menu {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  gap: 3rem;
+  justify-content: center;
+  height: 100%;
+}
+.nav__menu li {
+  padding: 0 15px;
+}
+.nav__link {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 .nav__toggler {
   display: none;
@@ -47,19 +51,16 @@ position: absolute;
 .nav__toggler div {
   width: 2.5rem;
   height: 0.2rem;
-  margin: 0.4rem;
   background: white;
   transition: 0.3s ease-in;
 }
-
 @media screen and (max-width: 768px) {
   .nav__toggler {
     display: block;
     cursor: pointer;
   }
-  
   .nav__menu {
-    position: fixed;
+    position: relative;
     top: 7vh;
     right: 0;
     height: 93vh;
@@ -70,23 +71,52 @@ position: absolute;
     transition: 0.5s ease-in;
   }
 }
-
 .nav__active {
   transform: translateX(0%);
 }
 
-.toggle .line1 {
-  transform: rotate(-45deg) translate(-4px, 5px);
-}
-.toggle .line2 {
-  opacity: 0;
-}
-.toggle .line3 {
-  transform: rotate(45deg) translate(-4px, -5px);
-}
-
-a img{
+a img {
   margin-top: 5px;
   width: 45px;
   height: 45px;
+}
+.nav__item-triangle {
+  position: relative;
+}
+.nav__item-triangle:before {
+  content: '';
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-200%);
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 25px solid transparent;
+  transition: border-top-color 0.3s;
+}
+.nav__item-triangle:hover:before {
+  border-top-color: #fff;
+}
+.nav__link {
+  position: relative;
+  align-items: left;
+}
+.nav__item {
+  position: relative;
+  display: flex;
+}
+.nav__item:hover,
+a:hover , .nav__item-triangle:hover{
+  color: rgb(167, 212, 238);
+  font-size: 1.2em;
+  transition: 0.15s;
+}
+
+ul {
+  display: flex; /* This displays list items in a row */
+  align-items: center; /* This vertically centers the items in the navbar */
+  padding: 0;
+  margin: 0;
+  list-style: none; /* Removes default list styling */
+  gap: 100px;
 }
