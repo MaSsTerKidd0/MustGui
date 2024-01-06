@@ -10,7 +10,7 @@ const LoginPage = () => {
   const handleLogin = (event) => {
     event.preventDefault();
     console.log(username, password);
-    navigate('/home');
+    navigate('/dashboard');
   };
 
   return (
