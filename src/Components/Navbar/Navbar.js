@@ -19,14 +19,14 @@ function Navbar() {
           </a>
         </li>
         <li className="nav__item nav__item-triangle">
-          <a href="#" className="nav__link">
-            Settings
+          <a href="/config" className="nav__link">
+            Configurations
           </a>
         </li>
       </ul>
       <ul>
         <li className="nav__item">
-          <a href="#" className="nav__link">
+          <a href="/profile" className="nav__link">
             <img
               className="nav__icon"
               src="/assets/pictures/person_icon.png"

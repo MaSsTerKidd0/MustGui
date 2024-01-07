@@ -1,0 +1,55 @@
+.config-page {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    height: 100vh;
+}
+
+.config-header {
+    text-align: center;
+}
+
+.config-body {
+    display: grid;
+    gap: 15px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.config-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.config-item label {
+    font-weight: bold;
+}
+
+.config-item input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.config-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.config-footer button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.config-footer button:hover {
+    background-color: #0056b3;
+}

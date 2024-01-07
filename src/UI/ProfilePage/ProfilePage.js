@@ -54,7 +54,7 @@ const ProfilePage = () => {
             )}
           </div>
           <div className="profile-details">
-            <h3>About</h3>
+            <h3>About Me</h3>
             {!editAbout ? (
               <div onDoubleClick={() => setEditAbout(true)}>
                 <p>{about}</p>
