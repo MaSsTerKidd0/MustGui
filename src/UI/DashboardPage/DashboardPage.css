@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
   background-color: #444544; /* Replace with your desired color */
-} 
+}
 
 .dashboard {
   display: grid;
@@ -12,11 +12,14 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  grid-template-rows: auto 1fr; /* Content and Footer */
+  grid-template-areas:
+    "item1 item2 item3"
+    "item1 item2 item3"
+    "footer footer footer";
   gap: 10px;
   padding: 10px;
   background-color: #444544; /* Replace with your desired color */
+  grid-template-rows: 1fr 1fr auto; /* Two rows for items and one for the footer */
 }
 
 .grid-item {
@@ -29,10 +32,22 @@
   align-items: center;
 }
 
-.grid-item-1 { background-color: #8a2be2; } /* Random color */
-.grid-item-2 { background-color: #deb887; } /* Random color */
-.grid-item-3 { background-color: #5f9ea0; } /* Random color */
+.grid-item-1 {
+  background-color: #8a2be2;
+  grid-area: item1;
+} /* Random color */
+.grid-item-2 {
+  background-color: #deb887;
+  grid-area: item2;
+} /* Random color */
+.grid-item-3 {
+  background-color: #5f9ea0;
+  grid-area: item3;
+} /* Random color */
 .grid-item-4 {
-  background-color: #008000; /* Green for Footer */
-  grid-column: 1 / -1; /* Footer spans all columns */
+  background-color: #008000;
+  grid-column: 1 / -1;
+  grid-area: footer;
+  padding: 10px;
+  height: 50px;
 }

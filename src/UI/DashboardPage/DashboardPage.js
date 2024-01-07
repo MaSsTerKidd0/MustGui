@@ -1,6 +1,6 @@
-import React from 'react';
-import './DashboardPage.css';
-import Navbar from '../../Components/Navbar/Navbar';
+import React from "react";
+import "./DashboardPage.css";
+import Navbar from "../../Components/Navbar/Navbar";
 
 const DashboardPage = () => {
   return (

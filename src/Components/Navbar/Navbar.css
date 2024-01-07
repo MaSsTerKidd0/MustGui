@@ -18,12 +18,14 @@ a {
   color: white;
 }
 .nav {
-  position: absolute;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 8vh;
-  width: 100%;
+  width: 100vw;
   background: rgb(0, 33, 65);
   padding: 0 10px;
 }
@@ -52,7 +54,7 @@ a {
   width: 2.5rem;
   height: 0.2rem;
   background: white;
-  transition: 0.3s ease-in;
+  transition: 0.3s ease-in-out;
 }
 @media screen and (max-width: 768px) {
   .nav__toggler {
@@ -68,7 +70,7 @@ a {
     background: rgb(0, 33, 65);
     flex-direction: column;
     transform: translateX(100%);
-    transition: 0.5s ease-in;
+    transition: 0.5s ease-in-out;
   }
 }
 .nav__active {
@@ -84,7 +86,7 @@ a img {
   position: relative;
 }
 .nav__item-triangle:before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -25px;
   left: 50%;
@@ -92,7 +94,7 @@ a img {
   border-left: 25px solid transparent;
   border-right: 25px solid transparent;
   border-top: 25px solid transparent;
-  transition: border-top-color 0.3s;
+  transition: border-top-color 0.3s ease-in-out;
 }
 .nav__item-triangle:hover:before {
   border-top-color: #fff;
@@ -105,11 +107,18 @@ a img {
   position: relative;
   display: flex;
 }
+
+.nav__item,
+a,
+.nav__item-triangle {
+  transition: all 0.15s ease-in-out;
+}
+
 .nav__item:hover,
-a:hover , .nav__item-triangle:hover{
+a:hover,
+.nav__item-triangle:hover {
   color: rgb(167, 212, 238);
-  font-size: 1.2em;
-  transition: 0.15s;
+  font-size: 1.1em;
 }
 
 ul {
