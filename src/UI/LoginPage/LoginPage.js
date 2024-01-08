@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.css"; // Make sure this points to the correct CSS file with your styles
-
+import PersonIcon from "../../assets/pictures/person_icon.png";
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -16,11 +16,7 @@ const LoginPage = () => {
   return (
     <div className="login-form-container">
       <form className="login-form" onSubmit={handleLogin}>
-        <img
-          src="/assets/pictures/person_icon.png"
-          alt="Login Image"
-          className="person-icon"
-        />
+        <img src={PersonIcon} alt="Login Image" className="person-icon" />
         <div className="input-group">
           <input
             className="input"

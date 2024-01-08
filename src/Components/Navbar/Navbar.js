@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-
+import PersonIcon from "../../assets/pictures/person_icon.png";
 function Navbar() {
   return (
     <nav className="nav">
@@ -27,11 +27,7 @@ function Navbar() {
       <ul>
         <li className="nav__item">
           <a href="/profile" className="nav__link">
-            <img
-              className="nav__icon"
-              src="/assets/pictures/person_icon.png"
-              alt="Person Icon"
-            />
+            <img className="nav__icon" src={PersonIcon} alt="Person Icon" />
           </a>
         </li>
       </ul>
