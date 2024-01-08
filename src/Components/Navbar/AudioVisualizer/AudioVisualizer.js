@@ -13,11 +13,11 @@ const AudioVisualizer = ({ url, wavesurferRef }) => {
       cursorColor: "navy",
       height: 50,
       barWidth: 3,
-      width: 1000,
+      width: 100,
+      responsive: true,
     });
 
     wavesurferRef.current.load(url);
-
     wavesurferRef.current.on("ready", () => {});
 
     return () => wavesurferRef.current.destroy();
