@@ -17,6 +17,11 @@ a {
   text-decoration: none;
   color: white;
 }
+h1 {
+  text-decoration: none;
+  color: white;
+}
+
 .nav {
   position: -webkit-sticky;
   position: sticky;

@@ -4,9 +4,7 @@ import PersonIcon from "../../assets/pictures/person_icon.png";
 function Navbar() {
   return (
     <nav className="nav">
-      <a href="#" className="nav__brand">
-        Must
-      </a>
+      <h1 className="nav__brand">Must</h1>
       <ul>
         <li className="nav__item nav__item-triangle">
           <a href="/AboutUs" className="nav__link">
