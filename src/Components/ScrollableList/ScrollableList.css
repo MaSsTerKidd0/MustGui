@@ -1,8 +1,9 @@
 .scrollable-div {
-  height: 200px; /* Adjust the height as needed */
+  max-height: 375px; /* Adjust the height as needed */
   overflow-y: auto;
   border: 1px solid #ccc;
   padding: 10px;
+  margin: 10px;
 }
 
 .item {

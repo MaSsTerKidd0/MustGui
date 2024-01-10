@@ -4,7 +4,16 @@ import "./ScrollableList.css";
 const ScrollableList = () => {
   const [selectedItems, setSelectedItems] = useState({});
 
-  const items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]; // Add more items as needed
+  const items = [
+    "Save 1",
+    "Save 2",
+    "Save 3",
+    "Save 4",
+    "Save 5",
+    "Save 6",
+    "Save 7",
+    "Save 8",
+  ]; // Add more items as needed
 
   const toggleItemSelection = (item) => {
     setSelectedItems((prev) => ({ ...prev, [item]: !prev[item] }));

@@ -1,0 +1,11 @@
+/* Footer.css */
+.footer {
+  width: 99%;
+  background-color: darkgreen; /* Example color */
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  padding-block: 2.5rem;
+  margin-inline: 0.5%;
+  margin-bottom: 0.5%;
+}

@@ -1,55 +1,23 @@
+/* General Page Styles */
 .conf-page {
-  width: 100vw;
-  height: 100vh;
   background-color: #444544;
+  max-width: 100vw;
+  max-height: 100vh;
 }
 
-.config-page {
-  display: block;
-  flex-direction: column;
-  margin: 20px;
-}
-
+/* Grid Container */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
+  gap: 15px;
+  row-gap: 0;
 }
 
-.ip-section,
-.aes-section,
-.configs-section {
-  margin-bottom: 20px;
-}
-
-.button {
-  background-color: #4caf50;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 14px; /* Smaller font size */
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  border-radius: 8px;
-  box-shadow: 0 4px #999;
-}
-
-.button-section {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
-}
-#save-button {
-  grid-column: span 2;
-}
-
+/* Basic Configurations */
 .basic-configurations {
-  display: grid;
+  display: flex;
   flex-direction: column;
-  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   grid-column: span 2;
   padding: 15px;
@@ -58,30 +26,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.basic-configurations label {
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #fff;
-  grid-column: 1;
-}
-
-.basic-configurations input[type="text"] {
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  font-size: 14px;
-  grid-column: 1;
-}
-.scroll-box {
-  height: 150px;
-  width: 200px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-top: 20px;
-}
-
+/* Old Configurations */
 .old-configurations {
   display: flex;
   flex-direction: column;
@@ -90,8 +35,61 @@
   border: 1px solid white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
+.basic-configurations,
+.old-configurations {
+  min-height: 76vh;
+}
+
+/* Button Styles */
+.button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 4px #0d5d01;
+}
+
+.button-section {
+  display: flex;
+  gap: 10px;
+  bottom: 0;
+}
+
+#save-button {
+  grid-column: span 2;
+}
+
+/* Label and Input Styles */
+.basic-configurations label,
+.aes-radio-container label,
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #fff;
+  grid-column: 1;
+}
+
+.basic-configurations input[type="text"],
+input[type="radio"] {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  grid-column: 1;
+}
+
+/* AES Radio Container */
 .aes-radio-container {
   grid-column: 2;
   justify-content: center;
@@ -103,10 +101,7 @@
   padding: 5px;
 }
 
-input[type="radio"] {
-  margin-right: 10px;
-}
-
+/* General Label Style (overridden above) */
 label {
   font-size: 16px;
   color: #333;
