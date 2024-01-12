@@ -1,7 +1,7 @@
 import React from "react";
 import "./AboutPage.css"; // Assuming you have an external CSS file
 import Navbar from "../../Components/Navbar/Navbar";
-
+import Footer from "../../Components/Footer/Footer";
 const AboutPage = () => {
   return (
     <div>
@@ -30,6 +30,7 @@ const AboutPage = () => {
           tincidunt sapien risus a quam.
         </p>
       </div>
+      <Footer />
     </div>
   );
 };
