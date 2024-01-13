@@ -1,16 +1,37 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./LoginPage.css"; // Make sure this points to the correct CSS file with your styles
+import "./LoginPage.css"; // Ensure this points to the correct CSS file
 import PersonIcon from "../../assets/pictures/person_icon.png";
+
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate(); // Hook for navigation
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
-    console.log(username, password);
-    navigate("/dashboard");
+
+    try {
+      const response = await fetch("http://127.0.0.1:8080/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data); // or handle the response as needed
+        navigate("/dashboard");
+      } else {
+        console.error("Login failed");
+        // Handle login failure (show message to user, etc.)
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+      // Handle network error (show message to user, etc.)
+    }
   };
 
   return (
