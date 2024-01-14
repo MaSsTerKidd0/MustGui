@@ -1,5 +1,13 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-y:hidden;
+}
+
 .about-us {
-  max-width: 800px;
+  flex: 1;
+  max-width: 1250px;
   margin: 0 auto;
   margin-top: 5.5em;
   padding: 20px;
@@ -8,6 +16,8 @@
   background-color: #f8f8f8;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 550px;
+  margin-bottom: 50px;
 }
 
 .about-us h1 {
@@ -19,4 +29,9 @@
   text-align: justify;
   line-height: 1.6;
   margin-bottom: 15px;
+}
+.footer {
+  padding-top: 20px;
+  position: sticky;
+  bottom: 0;
 }

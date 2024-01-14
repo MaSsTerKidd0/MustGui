@@ -1,29 +1,36 @@
 body {
   background-color: #444544;
+  margin: 0; /* Remove default margin */
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Horizontally centers the child */
-  align-items: center; /* Vertically centers the child */
+  min-height: 100vh; /* Minimum height of the viewport */
+  min-width: 100vw;
 }
-
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
 .profile-page-container {
-  width: 100%; /* Adjust as needed */
+  width: 80%;
   margin: auto;
+  padding: 20px;
+  min-height: 80vh; /* Adjusted height */
 }
 .user-profile {
-  font-family: "Arial", sans-serif;
-  width: 60%;
-
-  margin: 0 auto;
-  margin-top: 5.5%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  background: #f3f3f3;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background: #fff;
+  min-height: 50vh; /* Adjusted height */
 }
 
 .profile-header {
   text-align: center;
+  color: #333;
 }
 
 .user-name {
@@ -32,18 +39,18 @@ body {
 }
 
 .user-title {
-  font-size: 18px;
-  color: #000;
-  margin: 0;
+  font-size: 20px;
+  color: #555;
 }
 
 .profile-details h3 {
   color: #333;
   margin-top: 20px;
+
 }
 
 .profile-details p {
-  text-align: center;
+  text-align: left;
   color: #000;
 }
 
@@ -73,7 +80,7 @@ body {
 
 @media (max-width: 768px) {
   .user-profile {
-    width: 90%;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -81,6 +88,9 @@ body {
   resize: none; /* Disables resizing */
   width: 100%; /* Set a fixed width */
   height: 150px; /* Set a fixed height */
+  overflow: auto; /* Adds scrollbar if content overflows */
+  word-wrap: break-word; /* Wraps long words onto the next line */
+  max-width: 100%; /* Ensures it doesn't exceed parent container */
 }
 .char-count {
   text-align: right;
@@ -88,3 +98,17 @@ body {
   color: #666; /* Or any color you prefer */
   font-size: 0.9em;
 }
+.footer {
+  padding-top: 20px;
+  position: sticky;
+  bottom: 0;
+}
+.button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+

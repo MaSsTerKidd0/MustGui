@@ -1,34 +1,79 @@
 import React from "react";
-import "./AboutPage.css"; // Assuming you have an external CSS file
+import "./AboutPage.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
+
 const AboutPage = () => {
   return (
-    <div>
+    <div className="main-container">
       <Navbar />
       <div className="about-us">
         <h1>About Us</h1>
+        <h2>Must: Efficient, Secure Multi-Network Data Adapter</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          euismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
+          Must is a highly efficient, encrypted multi-system adapter written in
+          Rust. It's designed to optimize data transfer between networks with
+          differing bandwidth capabilities. Acting as a smart intermediary, Must
+          ensures the seamless and secure transmission of data, maximizing
+          throughput in complex network environments.
         </p>
+        <h3>Features</h3>
+        <ul>
+          <li>
+            <strong>Dynamic Data Filtering:</strong> Intelligently identifies
+            and processes packets meant for the target network.
+          </li>
+          <li>
+            <strong>Adaptive Compression:</strong> Reduces data size for faster
+            transmission, adjusting compression levels based on network
+            capacity.
+          </li>
+          <li>
+            <strong>Robust Encryption:</strong> Ensures data security during
+            transit, safeguarding sensitive information.
+          </li>
+          <li>
+            <strong>Smart Fragmentation:</strong> Splits larger data packets
+            when necessary to fit the bandwidth constraints of the receiving
+            network.
+          </li>
+          <li>
+            <strong>Bandwidth Optimization:</strong> Dynamically adapts to
+            network conditions to maximize data transfer efficiency.
+          </li>
+        </ul>
+        <h3>Use Case</h3>
         <p>
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-          officia deserunt mollit anim id est laborum. Curabitur pretium
-          tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et
-          commodo pharetra, est eros bibendum elit, nec luctus magna felis
-          sollicitudin mauris.
+          Ideal for scenarios where two networks with different maximum
+          bandwidths need to exchange data. Perfect for a high-speed LAN
+          communicating with a slower WAN, or bridging data centers with varying
+          network capabilities, Must ensures optimal data flow with utmost
+          security.
         </p>
-        <p>
-          Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus
-          vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut
-          ullamcorper, ligula eu tempor congue, eros est euismod turpis, id
-          tincidunt sapien risus a quam.
-        </p>
+        <h3>How It Works</h3>
+        <ol>
+          <li>
+            <strong>Data Reception:</strong> Listens for incoming data from
+            Network_1.
+          </li>
+          <li>
+            <strong>Filtering:</strong> Identifies and isolates packets destined
+            for Network_2.
+          </li>
+          <li>
+            <strong>Compression and Encryption:</strong> Compresses and encrypts
+            the filtered data to reduce size and enhance security.
+          </li>
+          <li>
+            <strong>Fragmentation (If Needed):</strong> If Network_2's bandwidth
+            is lower than the data size, Must fragments the data to ensure
+            smooth transmission.
+          </li>
+          <li>
+            <strong>Transmission:</strong> Sends the processed data to
+            Network_2, optimizing for the available bandwidth.
+          </li>
+        </ol>
       </div>
       <Footer />
     </div>

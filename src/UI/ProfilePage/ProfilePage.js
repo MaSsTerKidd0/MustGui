@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ProfilePage.css";
 import Navbar from "../../Components/Navbar/Navbar";
+import Footer from "../../Components/Footer/Footer";
 
 const ProfilePage = () => {
   const [nickname, setNickname] = useState("John Doe");
@@ -8,7 +9,7 @@ const ProfilePage = () => {
   const [newNickname, setNewNickname] = useState("");
 
   const [about, setAbout] = useState(
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitiaLorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitiaLorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitiaLorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitiaLorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitiaLorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitiaLorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitiaLorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitiaLorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitiaLorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitiaLorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia..."
+    "dedicated and passionate software engineer with a deep commitment to continuous learning and improvement. With over five years of experience in the tech industry, I specialize in developing scalable and efficient web applications. My journey in the tech world started with a Bachelor's degree in Computer Science, followed by various roles that honed my skills in technologies like React, Node.js, and cloud computing. Beyond coding, I am an advocate for clean code practices and enjoy contributing to open source projects. Outside of work, I'm an avid reader and enjoy exploring the latest trends in AI and machine learning. My goal is to leverage technology to create impactful solutions and to keep growing as a tech leader in this ever-evolving industry."
   );
   const [editAbout, setEditAbout] = useState(false);
   const [newAbout, setNewAbout] = useState(about);
@@ -29,7 +30,10 @@ const ProfilePage = () => {
   };
 
   return (
-    <div>
+    <div
+      className="main-container"
+      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+    >
       <Navbar />
       <div className="profile-page-container">
         <div className="user-profile">
@@ -84,6 +88,7 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
