@@ -4,7 +4,7 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <footer className="footer">
-      © 2024 Your Company Name. All Rights Reserved.
+      © 2024 Daniel Elharar Must In Rust. All Rights Reserved.
     </footer>
   );
 };
