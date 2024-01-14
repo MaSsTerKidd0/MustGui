@@ -5,8 +5,9 @@ import ScrollableList from "../../Components/ScrollableList/ScrollableList";
 import Footer from "../../Components/Footer/Footer";
 
 const ConfigPage = () => {
-  const [configName, setConfigName] = useState("");
-  const [ipAddr, setIpAddr] = useState("");
+  const [config_name, setConfigName] = useState("");
+  const [ip_addr, setIpAddr] = useState("");
+  const [aes_type, setAesType] = useState("aes-cbc");
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -16,10 +17,36 @@ const ConfigPage = () => {
       setIpAddr(value);
     }
   };
-  const [aesType, setAesType] = useState("aes-cbc");
 
   const handleAesChange = (event) => {
     setAesType(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const configData = {
+      config_name,
+      ip_addr,
+      aes_type,
+    };
+
+    try {
+      const response = await fetch("http://127.0.0.1:8080/config", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(configData),
+      });
+
+      if (response.ok) {
+        console.log("Configuration saved successfully");
+      } else {
+        console.error("Failed to save the configuration");
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+    }
   };
 
   return (
@@ -33,7 +60,7 @@ const ConfigPage = () => {
             type="text"
             id="configName"
             name="configName"
-            value={configName}
+            value={config_name}
             onChange={handleInputChange}
           />
           <label htmlFor="ipAddr">IP address:</label>
@@ -41,7 +68,7 @@ const ConfigPage = () => {
             type="text"
             id="ipAddr"
             name="ipAddr"
-            value={ipAddr}
+            value={ip_addr}
             onChange={handleInputChange}
           />
           <div className="aes-radio-container">
@@ -52,7 +79,7 @@ const ConfigPage = () => {
                   id="aes-ctr"
                   name="encryption"
                   value="Aes-Ctr"
-                  checked={aesType === "Aes-Ctr"}
+                  checked={aes_type === "Aes-Ctr"}
                   onChange={handleAesChange}
                 />
                 <label htmlFor="aes-ctr">Aes-Ctr</label>
@@ -74,14 +101,19 @@ const ConfigPage = () => {
                   id="aes-cbc"
                   name="encryption"
                   value="Aes-Cbc"
-                  checked={aesType === "Aes-Cbc"}
+                  checked={aes_type === "Aes-Cbc"}
                   onChange={handleAesChange}
                 />
                 <label htmlFor="aes-cbc">Aes-Cbc</label>
               </div>
             </form>
           </div>
-          <button className="button" id="save-button">
+          <button
+            className="button"
+            id="save-button"
+            type="submit"
+            onSubmit={handleSubmit}
+          >
             Save
           </button>
         </div>

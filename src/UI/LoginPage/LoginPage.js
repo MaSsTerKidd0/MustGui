@@ -22,15 +22,13 @@ const LoginPage = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data); // or handle the response as needed
+        console.log(data);
         navigate("/dashboard");
       } else {
         console.error("Login failed");
-        // Handle login failure (show message to user, etc.)
       }
     } catch (error) {
       console.error("Network error:", error);
-      // Handle network error (show message to user, etc.)
     }
   };
 

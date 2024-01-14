@@ -25,6 +25,7 @@ body {
   flex-direction: column;
   justify-content: center;
 }
+
 .user-profile {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
