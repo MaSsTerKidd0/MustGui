@@ -11,6 +11,7 @@ import "./App.css";
 import ProfilePage from "./UI/ProfilePage/ProfilePage";
 import AboutUsPage from "./UI/AboutPage/AboutPage";
 import ConfigPage from "./UI/ConfigurationPage/ConfigPage";
+import AdminUserManagement from "./UI/HRPage/HRPage";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/AboutUs" element={<AboutUsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/config" element={<ConfigPage />} />
+        <Route path="/HR" element={<AdminUserManagement />} />
       </Routes>
     </Router>
   );

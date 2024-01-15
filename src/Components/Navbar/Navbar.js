@@ -21,6 +21,11 @@ function Navbar() {
             Configurations
           </a>
         </li>
+        <li className="nav__item nav__item-triangle">
+          <a href="/HR" className="nav__link">
+            Manage
+          </a>
+        </li>
       </ul>
       <ul>
         <li className="nav__item">

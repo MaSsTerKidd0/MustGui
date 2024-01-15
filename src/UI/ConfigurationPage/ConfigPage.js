@@ -108,12 +108,7 @@ const ConfigPage = () => {
               </div>
             </form>
           </div>
-          <button
-            className="button"
-            id="save-button"
-            type="submit"
-            onSubmit={handleSubmit}
-          >
+          <button className="button" id="save-button" onClick={handleSubmit}>
             Save
           </button>
         </div>
