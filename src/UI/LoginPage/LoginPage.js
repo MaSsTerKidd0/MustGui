@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./LoginPage.css"; // Ensure this points to the correct CSS file
-import PersonIcon from "../../assets/pictures/person_icon.png";
+import "./LoginPage.css"; // Make sure this CSS file includes your provided styles
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault();
-
     try {
       const response = await fetch("http://127.0.0.1:8080/login", {
         method: "POST",
@@ -33,35 +31,32 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login-form-container">
-      <form className="login-form" onSubmit={handleLogin}>
-        <img src={PersonIcon} alt="Login Image" className="person-icon" />
-        <div className="input-group">
+    <div className="ring">
+      <i style={{ "--clr": "#00ff0a" }}></i>
+      <i style={{ "--clr": "#ff0057" }}></i>
+      <i style={{ "--clr": "#fffd44" }}></i>
+      <div className="login">
+        <h2>Login</h2>
+        <div className="inputBx">
           <input
-            className="input"
             type="text"
-            id="username"
-            name="username"
-            required
+            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <label htmlFor="username">Username</label>
         </div>
-        <div className="input-group">
+        <div className="inputBx">
           <input
-            className="input"
             type="password"
-            id="password"
-            name="password"
-            required
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <label htmlFor="password">Password</label>
         </div>
-        <button type="submit">Login</button>
-      </form>
+        <div className="inputBx">
+          <input type="submit" value="Sign in" onClick={handleLogin} />
+        </div>
+      </div>
     </div>
   );
 };
