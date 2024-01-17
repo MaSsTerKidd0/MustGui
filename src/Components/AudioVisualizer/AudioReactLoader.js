@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./Loader.css"; // Make sure to import your CSS file
+import styles from "./Loader.module.css"; // Make sure to import your CSS file
 
 const Loader = ({ style }) => {
   return (
-    <div className="loader-container">
+    <div className={styles.loaderContainer}>
       {[...Array(11)].map((_, i) => (
         <div key={i} style={style}></div> // No need for specific class names
       ))}

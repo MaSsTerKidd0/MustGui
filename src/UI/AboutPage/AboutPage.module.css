@@ -1,11 +1,11 @@
-.main-container {
+.maincontainer {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   overflow-y: hidden;
 }
 
-.about-us {
+.aboutus {
   flex: 1;
   max-width: 100%; /* Allow full width on smaller screens */
   margin: 0 auto;
@@ -20,33 +20,27 @@
   padding: 15px;
 }
 
-.about-us h1 {
+.aboutus h1 {
   color: #2a2a2a;
   margin-top: 5px;
 }
 
-.about-us p {
+.aboutus p {
   text-align: center;
   line-height: 1.6;
   margin-bottom: 10px;
 }
 
-/* Responsive Footer */
-.footer {
-  position: sticky;
-  bottom: 0;
-}
-
 /* Media Queries for Different Screen Sizes */
 @media (max-width: 768px) {
-  .about-us {
+  .aboutus {
     margin-top: 3em;
     padding: 10px;
   }
 }
 
 @media (max-width: 480px) {
-  .about-us {
+  .aboutus {
     margin-top: 2em;
     padding: 5px;
   }

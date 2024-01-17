@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./LoginPage.css"; // Make sure this CSS file includes your provided styles
+import styles from "./LoginPage.module.css"; // Make sure this CSS file includes your provided styles
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -31,13 +31,13 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="ring">
+    <div className={styles.ring}>
       <i style={{ "--clr": "#00ff0a" }}></i>
       <i style={{ "--clr": "#ff0057" }}></i>
       <i style={{ "--clr": "#fffd44" }}></i>
-      <div className="login">
+      <div className={styles.login}>
         <h2>Login</h2>
-        <div className="inputBx">
+        <div className={styles.inputBx}>
           <input
             type="text"
             placeholder="Username"
@@ -45,7 +45,7 @@ const LoginPage = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div className="inputBx">
+        <div className={styles.inputBx}>
           <input
             type="password"
             placeholder="Password"
@@ -53,7 +53,7 @@ const LoginPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div className="inputBx">
+        <div className={styles.inputBx}>
           <input type="submit" value="Sign in" onClick={handleLogin} />
         </div>
       </div>

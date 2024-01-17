@@ -1,15 +1,21 @@
 import React, { useState } from "react";
-import "./ConfigPage.css";
+import styles from "./ConfigPage.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import ScrollableList from "../../Components/ScrollableList/ScrollableList";
 import Footer from "../../Components/Footer/Footer";
+import Selector from "../../Components/Selector/Selector";
 
 const ConfigPage = () => {
+  const aesOptions = [
+    { value: "AesCtr", label: "AES-CTR" },
+    { value: "AesGcmSiv", label: "AES-GCM-SIV" },
+    { value: "AesCbc", label: "AES-CBC" },
+  ];
   const [configData, setConfigData] = useState({
     configName: "",
     secureNet: "",
     unsecureNet: "",
-    aesType: "",
+    aesType: "AesCtr",
   });
 
   const handleInputChange = (event) => {
@@ -43,11 +49,11 @@ const ConfigPage = () => {
   };
 
   return (
-    <div className="conf-page">
+    <div className={styles.confPage}>
       <Navbar />
-      <div className="grid-container">
-        <div className="basic-configurations">
-          <div className="config-name">
+      <div className={styles.gridContainer}>
+        <div className={styles.basicConfigurations}>
+          <div className={styles.configName}>
             <label htmlFor="configName">Configuration Name:</label>
             <input
               type="text"
@@ -57,7 +63,7 @@ const ConfigPage = () => {
               onChange={handleInputChange}
             />
           </div>
-          <div className="secure-net">
+          <div className={styles.secureNet}>
             <label htmlFor="secureNet">Secured Network:</label>
             <input
               type="text"
@@ -67,7 +73,7 @@ const ConfigPage = () => {
               onChange={handleInputChange}
             />
           </div>
-          <div className="unsecure-net">
+          <div className={styles.unsecureNet}>
             <label htmlFor="unsecureNet">Unsecured Network:</label>
             <input
               type="text"
@@ -77,26 +83,17 @@ const ConfigPage = () => {
               onChange={handleInputChange}
             />
           </div>
-          <div className="aes-radio-container">
-            <form>
-              {["Aes-Ctr", "Aes-Gcm-Siv", "Aes-Cbc"].map((type) => (
-                <div key={type} className="radio-button-container">
-                  <input
-                    type="radio"
-                    id={type}
-                    name="aesType"
-                    value={type}
-                    checked={configData.aesType === type}
-                    onChange={handleInputChange}
-                  />
-                  <label htmlFor={type}>{type}</label>
-                </div>
-              ))}
-            </form>
+          <div className={styles.aesTypeSelector}>
+            <Selector
+              name="aesType"
+              value={configData.aesType}
+              onChange={handleInputChange}
+              options={aesOptions}
+            />
           </div>
           <button
-            className="button"
-            id="save-button"
+            className={styles.button}
+            id="saveButton"
             onClick={handleSubmit}
             disabled={!isFormFilled()}
           >
@@ -104,11 +101,11 @@ const ConfigPage = () => {
           </button>
         </div>
 
-        <div className="old-configurations">
+        <div className={styles.oldConfigurations}>
           <ScrollableList />
-          <div className="button-section">
-            <button className="button">Load</button>
-            <button className="button">New</button>
+          <div className={styles.buttonSection}>
+            <button className={styles.button}>Load</button>
+            <button className={styles.button}>New</button>
           </div>
         </div>
       </div>

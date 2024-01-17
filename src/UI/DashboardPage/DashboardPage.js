@@ -1,19 +1,16 @@
 import React from "react";
-import "./DashboardPage.css";
+import styles from "./DashboardPage.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
-import AudioReactLoader from "../../Components/AudioVisualizer/AudioReactLoader";
 
 const DashboardPage = () => {
   return (
-    <div className="dashboard">
+    <div className={styles.dashboard}>
       <Navbar />
-      <div className="grid-container">
-        <div className="grid-item grid-item-1">Item 1</div>
-        <div className="grid-item grid-item-2">Item 2</div>
-        <div className="grid-item grid-item-3">
-          <AudioReactLoader />
-        </div>
+      <div className={styles.gridContainer}>
+        <div className={`${styles.gridItem} ${styles.gridItem1}`}>Item 1</div>
+        <div className={`${styles.gridItem} ${styles.gridItem2}`}>Item 2</div>
+        <div className={`${styles.gridItem} ${styles.gridItem3}`}>Item 3</div>
       </div>
       <Footer />
     </div>

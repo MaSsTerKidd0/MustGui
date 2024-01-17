@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./ScrollableList.css";
+import styles from "./ScrollableList.module.css";
 
 const ScrollableList = () => {
   const [selectedItems, setSelectedItems] = useState({});
@@ -20,11 +20,13 @@ const ScrollableList = () => {
   };
 
   return (
-    <div className="scrollable-div">
+    <div className={styles.scrollableDiv}>
       {items.map((item, index) => (
         <div
           key={index}
-          className={`item ${selectedItems[item] ? "selected" : ""}`}
+          className={`${styles.item} ${
+            selectedItems[item] ? `${styles.selected}` : ""
+          }`}
           onClick={() => toggleItemSelection(item)}
         >
           {item}

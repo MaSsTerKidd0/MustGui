@@ -1,15 +1,14 @@
 /* Footer.css */
 .footer {
-  position: fixed;
-  left: 0;
+  position: sticky;
   bottom: 0;
+  left: 0;
   width: 99%;
   background-color: grey; /* Choose your color */
   color: white;
   text-align: center;
+  padding: 10;
   border-radius: 8px;
-  padding: 10px 0;
-  margin-inline: 0.5%;
-  margin-block-end: 0.5%;
+  margin: 0.5%;
   font-weight: bolder;
 }

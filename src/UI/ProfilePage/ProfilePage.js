@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./ProfilePage.css";
+import styles from "./ProfilePage.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 
@@ -30,16 +30,13 @@ const ProfilePage = () => {
   };
 
   return (
-    <div
-      className="main-container"
-      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
-    >
+    <div className={styles.mainContainer}>
       <Navbar />
-      <div className="profile-page-container">
-        <div className="user-profile">
-          <div className="profile-header">
-            <h2 className="user-name">{nickname}</h2>
-            <p className="user-title">Software Engineer</p>
+      <div className={styles.profilePageContainer}>
+        <div className={styles.userProfile}>
+          <div className={styles.profileHeader}>
+            <h2 className={styles.userNsame}>{nickname}</h2>
+            <p className={styles.userTitle}>Software Engineer</p>
             {!showEditNickname && (
               <button onClick={handleEditClick}>Edit Nickname</button>
             )}
@@ -57,7 +54,7 @@ const ProfilePage = () => {
               </div>
             )}
           </div>
-          <div className="profile-details">
+          <div className={styles.profileDetails}>
             <h3>About Me</h3>
             {!editAbout ? (
               <div onDoubleClick={() => setEditAbout(true)}>
@@ -68,7 +65,7 @@ const ProfilePage = () => {
                 value={newAbout}
                 onChange={(e) => setNewAbout(e.target.value)}
                 maxLength="1500"
-                className="fixed-size-textarea"
+                className={styles.fixedSizeTextarea}
                 onBlur={() => setEditAbout(false)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.shiftKey) {
@@ -80,8 +77,8 @@ const ProfilePage = () => {
                 autoFocus
               />
             )}
-            <div className="char-count">{newAbout.length} / 1500</div>
-            <div className="reching-details">
+            <div className={styles.charCount}>{newAbout.length} / 1500</div>
+            <div className={styles.rechingDetails}>
               <p>Email: john.doe@example.com</p>
               <p>Phone: +1234567890</p>
             </div>

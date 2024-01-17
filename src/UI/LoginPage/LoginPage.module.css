@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap");
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+  font-weight: bolder;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #111;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Ring styles */
+.ring {
+  position: relative;
+  width: 50vw; /* Responsive width */
+  height: 50vw; /* Responsive height, keep it equal to width for a circle */
+  max-width: 500px; /* Maximum size */
+  max-height: 500px; /* Maximum size */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ring i {
+  position: absolute;
+  inset: 0;
+  border: 2px solid #fff;
+  transition: 0.5s;
+}
+.ring i:nth-child(1) {
+  border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+  animation: animate 6s linear infinite;
+}
+.ring i:nth-child(2) {
+  border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+  animation: animate 4s linear infinite;
+}
+.ring i:nth-child(3) {
+  border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+  animation: animate2 10s linear infinite;
+}
+.ring:hover i {
+  border: 6px solid var(--clr);
+  filter: drop-shadow(0 0 20px var(--clr));
+}
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate2 {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.login {
+  position: absolute;
+  width: 80%; /* Responsive width */
+  max-width: 300px; /* Maximum size */
+  height: auto; /* Auto height based on content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  gap: 20px;
+}
+
+.login h2 {
+  font-size: 1.5em; /* Responsive font size */
+}
+
+.login .inputBx {
+  position: relative;
+  width: 100%;
+}
+
+.login .inputBx input {
+  position: relative;
+  width: 100%;
+  padding: 12px 20px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 40px;
+  font-size: 1em; /* Responsive font size */
+  color: #fff;
+  box-shadow: none;
+  outline: none;
+}
+
+.login .inputBx input[type="submit"] {
+  width: 100%;
+  background: #0078ff;
+  background: linear-gradient(45deg, #ff357a, #fff172);
+  border: none;
+  cursor: pointer;
+}
+.login .inputBx input::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+.login .links {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.login .links a {
+  color: #fff;
+  text-decoration: none;
+}
+@media (max-width: 768px) {
+  .ring {
+    width: 70vw;
+    height: 70vw;
+  }
+
+  .login {
+    width: 90%;
+  }
+
+  .login h2 {
+    font-size: 1.2em;
+  }
+
+  /* Adjust font-sizes and other properties as needed */
+}
+
+@media (max-width: 480px) {
+  .ring {
+    width: 80vw;
+    height: 80vw;
+  }
+
+  .login {
+    width: 95%;
+  }
+
+  .login h2 {
+    font-size: 1em;
+  }
+
+  /* Further adjustments for smaller screens */
+}
+/* ... existing styles ... */
+
+/* Large Screens */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px; /* Maximum width of the main content */
+    margin: auto; /* Center the container */
+    padding: 20px; /* Padding around the content */
+  }
+
+  .ring {
+    width: 30vw; /* Adjust size for large screens */
+    height: 30vw;
+    max-width: 600px; /* Maximum size */
+    max-height: 600px;
+  }
+
+  .login {
+    max-width: 400px; /* Slightly larger max width for login section */
+  }
+
+  .login h2 {
+    font-size: 2.5em; /* Larger font size for large screens */
+  }
+
+  .login .inputBx input {
+    padding: 15px 25px; /* Larger padding */
+    font-size: 1.5em; /* Larger font size */
+  }
+
+  /* Increase padding and margins as needed */
+  .login .links {
+    padding: 0 30px;
+  }
+
+  /* Adjustments for other elements as needed */
+}
+
+/* Extra Large Screens (up to 1600px) */
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1400px;
+  }
+
+  .ring {
+    width: 25vw;
+    height: 25vw;
+    max-width: 700px;
+    max-height: 700px;
+  }
+
+  .login {
+    max-width: 450px;
+  }
+
+  .login h2 {
+    font-size: 3em;
+  }
+
+  .login .inputBx input {
+    padding: 20px 30px;
+    font-size: 1.75em;
+  }
+
+  /* Further adjustments for extra large screens */
+}
+
+/* Ultra Large Screens (up to 1920px) */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1600px; /* Limit the max width to ensure content doesn't stretch too far */
+  }
+
+  .ring {
+    width: 20vw;
+    height: 20vw;
+    max-width: 800px;
+    max-height: 800px;
+  }
+
+  .login {
+    max-width: 500px;
+  }
+
+  .login h2 {
+    font-size: 3.5em; /* Even larger font size for ultra-wide screens */
+  }
+
+  .login .inputBx input {
+    padding: 25px 35px;
+    font-size: 2em; /* Larger font size for input fields */
+  }
+
+  /* Adjustments for spacing, padding, and other elements as needed */
+}

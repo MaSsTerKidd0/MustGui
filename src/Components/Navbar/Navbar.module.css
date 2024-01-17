@@ -84,13 +84,15 @@ h1 {
 
 a img {
   margin-top: 5px;
-  width: 45px;
-  height: 45px;
+  width: 3rem; /* Adjust the size as needed */
+  height: 3rem; /* Adjust the size as needed */
+  max-width: 100%; /* Image can be at most 100% of its container */
+  max-height: 100%; /* Image can be at most 100% of its container */
 }
-.nav__item-triangle {
+.nav__itemTriangle {
   position: relative;
 }
-.nav__item-triangle:before {
+.nav__itemTriangle:before {
   content: "";
   position: absolute;
   bottom: -25px;
@@ -101,7 +103,7 @@ a img {
   border-top: 25px solid transparent;
   transition: border-top-color 0.3s ease-in-out;
 }
-.nav__item-triangle:hover:before {
+.nav__itemTriangle:hover:before {
   border-top-color: #fff;
 }
 .nav__link {
@@ -111,17 +113,21 @@ a img {
 .nav__item {
   position: relative;
   display: flex;
+  align-items: center; /* This ensures vertical centering */
+  justify-content: center; /* This ensures horizontal centering */
+  width: auto; /* Or you can use a relative size or max-size if needed */
+  height: auto; /* Or you can use a relative size or max-size if needed */
 }
 
 .nav__item,
 a,
-.nav__item-triangle {
+.nav__itemTriangle {
   transition: all 0.15s ease-in-out;
 }
 
 .nav__item:hover,
 a:hover,
-.nav__item-triangle:hover {
+.nav__itemTriangle:hover {
   color: rgb(167, 212, 238);
   font-size: 1.1em;
 }

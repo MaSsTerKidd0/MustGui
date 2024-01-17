@@ -1,4 +1,4 @@
-.scrollable-div {
+.scrollableDiv {
   max-height: 375px; /* Adjust the height as needed */
   overflow-y: auto;
   border: 1px solid #ccc;

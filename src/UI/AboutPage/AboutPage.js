@@ -1,13 +1,13 @@
 import React from "react";
-import "./AboutPage.css";
+import styles from "./AboutPage.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 
 const AboutPage = () => {
   return (
-    <div className="main-container">
+    <div className={styles.maincontainer}>
       <Navbar />
-      <div className="about-us">
+      <div className={styles.aboutus}>
         <h1>About Us</h1>
         <h2>Must: Efficient, Secure Multi-Network Data Adapter</h2>
         <p>

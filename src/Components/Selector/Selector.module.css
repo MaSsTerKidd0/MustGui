@@ -1,0 +1,35 @@
+.selectorContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+label {
+  margin-bottom: 0.5rem;
+}
+
+.navigationElement {
+  display: flex;
+  align-items: center;
+}
+
+.selector {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 5px 30px 5px 10px; /* Adjust for custom arrow */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  position: relative;
+  pointer-events: none;
+  user-select: none;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  cursor: pointer;
+}

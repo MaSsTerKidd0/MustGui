@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./HRPage.css"; // Importing the CSS file
+import styles from "./HRPage.module.css"; // Importing the CSS file
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 
@@ -44,10 +44,10 @@ const AdminUserManagement = () => {
   );
 
   return (
-    <div className="page-container">
+    <div className={styles.pageContainer}>
       <Navbar />
-      <div className="content-wrap">
-        <div className="admin-user-management">
+      <div className={styles.contentWrap}>
+        <div className={styles.adminUserManagement}>
           <h1>User Management</h1>
           <button onClick={handleAddUser}>Add New User</button>
           <table>
@@ -86,7 +86,7 @@ const AdminUserManagement = () => {
               ))}
             </tbody>
           </table>
-          <div className="pagination">
+          <div className={styles.pagination}>
             <button onClick={handlePrevPage} disabled={currentPage === 1}>
               ◄
             </button>
