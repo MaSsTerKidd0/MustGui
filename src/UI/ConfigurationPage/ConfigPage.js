@@ -92,8 +92,7 @@ const ConfigPage = () => {
             />
           </div>
           <button
-            className={styles.button}
-            id="saveButton"
+            className={styles.saveButton}
             onClick={handleSubmit}
             disabled={!isFormFilled()}
           >
