@@ -4,47 +4,63 @@ import Navbar from "../../Components/Navbar/Navbar";
 import ScrollableList from "../../Components/ScrollableList/ScrollableList";
 import Footer from "../../Components/Footer/Footer";
 import Selector from "../../Components/Selector/Selector";
-
+import axios from "axios";
 const ConfigPage = () => {
   const aesOptions = [
     { value: "AesCtr", label: "AES-CTR" },
     { value: "AesGcmSiv", label: "AES-GCM-SIV" },
     { value: "AesCbc", label: "AES-CBC" },
   ];
+
+  // State for the form data
   const [configData, setConfigData] = useState({
     configName: "",
     secureNet: "",
     unsecureNet: "",
-    aesType: "AesCtr",
+    aesType: aesOptions[0].value, // Default to the first option
   });
 
-  const handleInputChange = (event) => {
-    setConfigData({
-      ...configData,
-      [event.target.name]: event.target.value,
-    });
+  // Handles form input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setConfigData({ ...configData, [name]: value });
   };
 
+  // Checks if the form is completely filled out
   const isFormFilled = () => {
-    const { configName, secureNet, unsecureNet, aesType } = configData;
-    return configName && secureNet && unsecureNet && aesType;
+    return (
+      configData.configName &&
+      configData.secureNet &&
+      configData.unsecureNet &&
+      configData.aesType
+    );
   };
 
+  // Handles form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const response = await fetch("http://127.0.0.1:8080/config", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(configData),
-      });
-      if (response.ok) {
-        alert("Configuration saved successfully");
-      } else {
-        alert("Failed to save the configuration");
+    if (isFormFilled()) {
+      try {
+        const response = await axios.post(
+          "http://127.0.0.1:8080/config",
+          {
+            config_name: configData.configName,
+            secure_net: configData.secureNet,
+            unsecure_net: configData.unsecureNet,
+            aes_type: configData.aesType,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        console.log(response.data); // Handle the response accordingly
+      } catch (error) {
+        console.error("Error submitting the form", error);
       }
-    } catch (error) {
-      alert("Network error: " + error);
+    } else {
+      alert("Please fill out all fields.");
     }
   };
 

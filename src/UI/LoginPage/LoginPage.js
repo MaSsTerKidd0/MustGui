@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./LoginPage.module.css"; // Make sure this CSS file includes your provided styles
+import axios from "axios";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -10,17 +11,21 @@ const LoginPage = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("http://127.0.0.1:8080/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await axios.post(
+        "http://127.0.0.1:8080/login",
+        {
+          username,
+          password,
         },
-        body: JSON.stringify({ username, password }),
-      });
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
+      if (response.status === 200) {
+        console.log(response.data);
         navigate("/dashboard");
       } else {
         console.error("Login failed");
@@ -29,7 +34,6 @@ const LoginPage = () => {
       console.error("Network error:", error);
     }
   };
-
   return (
     <div className={styles.ring}>
       <i style={{ "--clr": "#00ff0a" }}></i>

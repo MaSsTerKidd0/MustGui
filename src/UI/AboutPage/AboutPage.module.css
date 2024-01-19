@@ -15,11 +15,11 @@
   height: auto;
   background-color: #1a1a1a;
   border-radius: 8px;
-  margin: 8px; /* Center the aboutus container */
+  margin: 1rem;
   color: #dcdcdc;
   flex-direction: column;
   align-items: center;
-  padding: 20px; /* Added padding for internal spacing */
+  padding: 1rem; /* Added padding for internal spacing */
 } 
 
 /* Headers styles */
@@ -50,7 +50,6 @@
 /* Paragraph styles */
 .aboutus p {
   text-align: center;
-  margin-bottom: 0.5rem;
 }
 
 /* List styles */
@@ -60,63 +59,4 @@
   margin-left: 1.5rem;
 }
 
-.aboutus li {
-  margin-bottom: 1.5rem;
-}
 
-/* Media Queries for Responsive Adjustments */
-@media (max-width: 768px) {
-  .aboutus {
-    margin: 8px; /* Adjust margins for smaller screens */
-    padding: 10px; /* Adjust padding for smaller screens */
-  }
-  
-  /* Smaller headers on smaller screens */
-  .aboutus h1 {
-    font-size: clamp(2rem, 8vw, 2.5rem);
-  }
-
-  .aboutus h2 {
-    font-size: clamp(1.5rem, 7vw, 2rem);
-  }
-
-  .aboutus h3 {
-    font-size: clamp(1.2rem, 6vw, 1.5rem);
-  }
-  
-  /* Adjust list padding and margin for smaller screens */
-  .aboutus ul,
-  .aboutus ol {
-    margin-left: 1rem;
-  }
-  
-  .aboutus li {
-    margin-bottom: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .maincontainer {
-    flex-direction: column; /* Stack elements vertically on very small screens */
-  }
-
-  .aboutus {
-    margin: 4px; /* Smaller margins for very small screens */
-    padding: 5px; /* Smaller padding for very small screens */
-  }
-
-  /* Adjust header sizes further for very small screens */
-  .aboutus h1 {
-    font-size: clamp(1.8rem, 10vw, 2.2rem);
-  }
-
-  .aboutus h2 {
-    font-size: clamp(1.3rem, 9vw, 1.8rem);
-  }
-
-  .aboutus h3 {
-    font-size: clamp(1rem, 8vw, 1.3rem);
-  }
-}
-
-/* Feel free to add more media queries for larger screens if needed */
