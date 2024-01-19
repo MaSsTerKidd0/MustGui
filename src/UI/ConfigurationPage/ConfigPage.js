@@ -49,67 +49,69 @@ const ConfigPage = () => {
   };
 
   return (
-    <div className={styles.confPage}>
-      <Navbar />
-      <div className={styles.gridContainer}>
-        <div className={styles.basicConfigurations}>
-          <div className={styles.configName}>
-            <label htmlFor="configName">Configuration Name:</label>
-            <input
-              type="text"
-              id="configName"
-              name="configName"
-              value={configData.configName}
-              onChange={handleInputChange}
-            />
+    <>
+      <div className={styles.confPage}>
+        <Navbar />
+        <div className={styles.gridContainer}>
+          <div className={styles.basicConfigurations}>
+            <div className={styles.configName}>
+              <label htmlFor="configName">Configuration Name:</label>
+              <input
+                type="text"
+                id="configName"
+                name="configName"
+                value={configData.configName}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className={styles.secureNet}>
+              <label htmlFor="secureNet">Secured Network:</label>
+              <input
+                type="text"
+                id="secureNet"
+                name="secureNet"
+                value={configData.secureNet}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className={styles.unsecureNet}>
+              <label htmlFor="unsecureNet">Unsecured Network:</label>
+              <input
+                type="text"
+                id="unsecureNet"
+                name="unsecureNet"
+                value={configData.unsecureNet}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className={styles.aesTypeSelector}>
+              <Selector
+                name="aesType"
+                value={configData.aesType}
+                onChange={handleInputChange}
+                options={aesOptions}
+              />
+            </div>
+            <button
+              className={styles.saveButton}
+              onClick={handleSubmit}
+              disabled={!isFormFilled()}
+            >
+              Save
+            </button>
           </div>
-          <div className={styles.secureNet}>
-            <label htmlFor="secureNet">Secured Network:</label>
-            <input
-              type="text"
-              id="secureNet"
-              name="secureNet"
-              value={configData.secureNet}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className={styles.unsecureNet}>
-            <label htmlFor="unsecureNet">Unsecured Network:</label>
-            <input
-              type="text"
-              id="unsecureNet"
-              name="unsecureNet"
-              value={configData.unsecureNet}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className={styles.aesTypeSelector}>
-            <Selector
-              name="aesType"
-              value={configData.aesType}
-              onChange={handleInputChange}
-              options={aesOptions}
-            />
-          </div>
-          <button
-            className={styles.saveButton}
-            onClick={handleSubmit}
-            disabled={!isFormFilled()}
-          >
-            Save
-          </button>
-        </div>
 
-        <div className={styles.oldConfigurations}>
-          <ScrollableList />
-          <div className={styles.buttonSection}>
-            <button className={styles.button}>Load</button>
-            <button className={styles.button}>New</button>
+          <div className={styles.oldConfigurations}>
+            <ScrollableList />
+            <div className={styles.buttonSection}>
+              <button className={styles.button}>Load</button>
+              <button className={styles.button}>New</button>
+            </div>
           </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 export default ConfigPage;

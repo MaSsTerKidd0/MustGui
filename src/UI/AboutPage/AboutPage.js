@@ -12,10 +12,12 @@ const AboutPage = () => {
         <h2>Must: Efficient, Secure Multi-Network Data Adapter</h2>
         <p>
           Must is a highly efficient, encrypted multi-system adapter written in
-          Rust. It's designed to optimize data transfer between networks with
-          differing bandwidth capabilities. Acting as a smart intermediary, Must
-          ensures the seamless and secure transmission of data, maximizing
-          throughput in complex network environments.
+          Rust.
+          <br /> It's designed to optimize data transfer between networks with
+          differing bandwidth capabilities.
+          <br /> Acting as a smart intermediary, Must ensures the seamless and
+          secure transmission of data, maximizing throughput in complex network
+          environments.
         </p>
         <h3>Features</h3>
         <ul>

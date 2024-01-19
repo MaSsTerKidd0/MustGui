@@ -1,19 +1,22 @@
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+.confPage {
+  height: 100vh;
+  justify-content: center;
+  color: #ffffff;
+  flex-direction: column;
+}
 
 .gridContainer {
   display: flex;
-  align-items: center; /* Center children horizontally */
-  justify-content: center; /* Center children vertically */
-  gap: 1rem;
+
   width: 100%;
-  padding: 1rem;
-  min-height: 80vh; /* Adjust this value as needed */
-}
-.confPage {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  justify-content: center;
-  color: #ffffff; /* Light text for contrast */
+  height: 100%; /* Adjust this value as needed */
 }
 
 
@@ -36,7 +39,6 @@
   margin-bottom: 1rem;
 }
 
-/* Input and Label styling */
 label {
   display: block;
   margin-bottom: 0.5rem;
@@ -65,7 +67,7 @@ input[type="text"] {
 .aesTypeSelector {
   display: flex; /* Enables flexbox for this container */
   justify-content: center; /* Centers children horizontally within the flex container */
-  margin: 1rem 0; /* Adds some space above and below */
+  margin: 1rem; /* Adds some space above and below */
 }
 
 .saveButton {
@@ -79,7 +81,7 @@ input[type="text"] {
   width: 100%;
 }
 
-.saveButton:hover {
+.saveButton:not(:disabled):hover {
   background-color: #3a3a3a; /* Slightly lighter for hover effect */
 }
 
@@ -102,10 +104,4 @@ input[type="text"] {
 .buttonSection .button {
   width: 50%; /* Each button takes up 50% of the width */
   text-align: center; /* Center the text inside the button */
-}
-
-@media screen and (max-width: 768px) {
-  .gridContainer {
-    grid-template-columns: 1fr;
-  }
 }

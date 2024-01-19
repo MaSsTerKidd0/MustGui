@@ -14,24 +14,34 @@ label {
 }
 
 .selector {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding: 5px 30px 5px 10px; /* Adjust for custom arrow */
+  list-style-type: none; /* Remove default list styling */
+  display: flex; /* Display options in a row */
+  color:black;
+  background-color: white;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: white;
-  position: relative;
-  pointer-events: none;
-  user-select: none;
 }
 
+.liShown{
+  display: inline-block !important;
+  user-select: none;
+  text-align: center;
+  font-weight: bolder;
+  padding: 3px;
+  width: 150px;
+}
+
+
+
 .arrow {
-  background-color:dimgray;
-  border: solid black;
-  border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
   cursor: pointer;
   user-select: none;
+  transition: 0.8s cubic-bezier(0, -0.14, 0.17, 1.66);
+}
+
+.arrow:hover {
+  transform: scale(1.5 ) rotateZ(360deg);
+  
 }
