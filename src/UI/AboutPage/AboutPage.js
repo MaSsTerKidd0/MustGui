@@ -26,22 +26,36 @@ const AboutPage = () => {
             and processes packets meant for the target network.
           </li>
           <li>
-            <strong>Adaptive Compression:</strong> Reduces data size for faster
-            transmission, adjusting compression levels based on network
-            capacity.
+            <strong>
+              Adaptive Compression:
+              <br />
+            </strong>{" "}
+            Reduces data size for faster transmission, adjusting compression
+            levels based on network capacity.
           </li>
           <li>
-            <strong>Robust Encryption:</strong> Ensures data security during
-            transit, safeguarding sensitive information.
+            <strong>
+              Robust Encryption:
+              <br />
+            </strong>{" "}
+            Ensures data security during transit, safeguarding sensitive
+            information.
           </li>
           <li>
-            <strong>Smart Fragmentation:</strong> Splits larger data packets
-            when necessary to fit the bandwidth constraints of the receiving
-            network.
+            <strong>
+              Smart Fragmentation:
+              <br />
+            </strong>{" "}
+            Splits larger data packets when necessary to fit the bandwidth
+            constraints of the receiving network.
           </li>
           <li>
-            <strong>Bandwidth Optimization:</strong> Dynamically adapts to
-            network conditions to maximize data transfer efficiency.
+            <strong>
+              Bandwidth Optimization:
+              <br />
+            </strong>{" "}
+            Dynamically adapts to network conditions to maximize data transfer
+            efficiency.
           </li>
         </ul>
         <h3>Use Case</h3>
