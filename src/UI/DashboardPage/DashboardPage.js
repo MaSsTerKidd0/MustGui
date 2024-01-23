@@ -8,9 +8,9 @@ const DashboardPage = () => {
     <div className={styles.dashboard}>
       <Navbar />
       <div className={styles.gridContainer}>
-        <div className={`${styles.gridItem} ${styles.gridItem1}`}>Item 1</div>
-        <div className={`${styles.gridItem} ${styles.gridItem2}`}>Item 2</div>
-        <div className={`${styles.gridItem} ${styles.gridItem3}`}>Item 3</div>
+        <div className={`${styles.gridItem} ${styles.gridItem1}`}></div>
+        <div className={`${styles.gridItem} ${styles.gridItem2}`}></div>
+        <div className={`${styles.gridItem} ${styles.gridItem3}`}></div>
       </div>
       <Footer />
     </div>

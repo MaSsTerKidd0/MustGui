@@ -5,6 +5,7 @@ import ScrollableList from "../../Components/ScrollableList/ScrollableList";
 import Footer from "../../Components/Footer/Footer";
 import Selector from "../../Components/Selector/Selector";
 import axios from "axios";
+
 const ConfigPage = () => {
   const [items, setItems] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -107,55 +108,52 @@ const ConfigPage = () => {
     <>
       <div className={styles.confPage}>
         <Navbar />
-        <div className={styles.gridContainer}>
-          <div className={styles.basicConfigurations}>
-            <div className={styles.configName}>
-              <label htmlFor="configName">Configuration Name:</label>
-              <input
-                type="text"
-                id="configName"
-                name="configName"
-                value={configData.configName}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className={styles.secureNet}>
-              <label htmlFor="secureNet">Secured Network:</label>
-              <input
-                type="text"
-                id="secureNet"
-                name="secureNet"
-                value={configData.secureNet}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className={styles.unsecureNet}>
-              <label htmlFor="unsecureNet">Unsecured Network:</label>
-              <input
-                type="text"
-                id="unsecureNet"
-                name="unsecureNet"
-                value={configData.unsecureNet}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className={styles.aesTypeSelector}>
-              <Selector
-                name="aesType"
-                value={configData.aesType}
-                onChange={handleInputChange}
-                options={aesOptions}
-              />
-            </div>
-            <button
-              className={styles.saveButton}
-              onClick={handleSubmit}
-              disabled={!isFormFilled()}
-            >
-              Save
-            </button>
+        <div className={styles.basicConfigurations}>
+          <div className={styles.configName}>
+            <label htmlFor="configName">Configuration Name:</label>
+            <input
+              type="text"
+              id="configName"
+              name="configName"
+              value={configData.configName}
+              onChange={handleInputChange}
+            />
           </div>
-
+          <div className={styles.secureNet}>
+            <label htmlFor="secureNet">Secured Network:</label>
+            <input
+              type="text"
+              id="secureNet"
+              name="secureNet"
+              value={configData.secureNet}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className={styles.unsecureNet}>
+            <label htmlFor="unsecureNet">Unsecured Network:</label>
+            <input
+              type="text"
+              id="unsecureNet"
+              name="unsecureNet"
+              value={configData.unsecureNet}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className={styles.aesTypeSelector}>
+            <Selector
+              name="aesType"
+              value={configData.aesType}
+              onChange={handleInputChange}
+              options={aesOptions}
+            />
+          </div>
+          <button
+            className={styles.saveButton}
+            onClick={handleSubmit}
+            disabled={!isFormFilled()}
+          >
+            Save
+          </button>
           <div className={styles.oldConfigurations}>
             <ScrollableList items={items} />
             <div className={styles.buttonSection}>

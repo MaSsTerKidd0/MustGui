@@ -10,8 +10,6 @@
   background-color: transparent; /* Choose your color */
   color: white;
   text-align: center;
-  justify-content: center;
   margin-inline: 0.5%;
-  border-radius: 8px;
   font-weight: bolder;
 }
