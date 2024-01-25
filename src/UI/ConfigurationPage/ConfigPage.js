@@ -119,25 +119,97 @@ const ConfigPage = () => {
               onChange={handleInputChange}
             />
           </div>
-          <div className={styles.secureNet}>
-            <label htmlFor="secureNet">Secured Network:</label>
-            <input
-              type="text"
-              id="secureNet"
-              name="secureNet"
-              value={configData.secureNet}
-              onChange={handleInputChange}
-            />
+          <div class="secureNetContainer networkContainer">
+            <div className={styles.secureNet}>
+              <label htmlFor="secureNet">Secured Network:</label>
+              <input
+                type="text"
+                id="secureNet"
+                name="secureNet"
+                value={configData.secureNet}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className={styles.secureNetPort}>
+              <label htmlFor="secureNetPort">Secured Network Port:</label>
+              <input
+                type="text"
+                id="secureNetPort"
+                name="secureNetPort"
+                value={configData.secureNetPort}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className={styles.secureNetSubnetMask}>
+              <label htmlFor="secureNetSubnetMask">
+                Secured Network Subnet Mask:
+              </label>
+              <input
+                type="text"
+                id="secureNetSubnetMask"
+                name="secureNetSubnetMask"
+                value={configData.secureNetSubnetMask}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className={styles.secureNetBandwidth}>
+              <label htmlFor="secureNetBandwidth">
+                Secured Network Bandwidth:
+              </label>
+              <input
+                type="text"
+                id="secureNetBandwidth"
+                name="secureNetBandwidth"
+                value={configData.secureNetBandwidth}
+                onChange={handleInputChange}
+              />
+            </div>
           </div>
-          <div className={styles.unsecureNet}>
-            <label htmlFor="unsecureNet">Unsecured Network:</label>
-            <input
-              type="text"
-              id="unsecureNet"
-              name="unsecureNet"
-              value={configData.unsecureNet}
-              onChange={handleInputChange}
-            />
+          <div class="unsecureNetContainer networkContainer">
+            <div className={styles.unsecureNet}>
+              <label htmlFor="unsecureNet">Unsecured Network:</label>
+              <input
+                type="text"
+                id="unsecureNet"
+                name="unsecureNet"
+                value={configData.unsecureNet}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className={styles.unsecureNetPort}>
+              <label htmlFor="unsecureNetPort">Unsecured Network Port:</label>
+              <input
+                type="text"
+                id="unsecureNetPort"
+                name="unsecureNetPort"
+                value={configData.unsecureNetPort}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className={styles.unsecureNetSubnetMask}>
+              <label htmlFor="unsecureNetSubnetMask">
+                Unsecured Network Subnet Mask:
+              </label>
+              <input
+                type="text"
+                id="unsecureNetSubnetMask"
+                name="unsecureNetSubnetMask"
+                value={configData.unsecureNetSubnetMask}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className={styles.unsecureNetBandwidth}>
+              <label htmlFor="unsecureNetBandwidth">
+                Unsecured Network Bandwidth:
+              </label>
+              <input
+                type="text"
+                id="unsecureNetBandwidth"
+                name="unsecureNetBandwidth"
+                value={configData.unsecureNetBandwidth}
+                onChange={handleInputChange}
+              />
+            </div>
           </div>
           <div className={styles.aesTypeSelector}>
             <Selector
