@@ -1,5 +1,3 @@
-/* ConfigPage.module.css */
-
 .confPage {
   display: flex;
   flex-direction: column;
@@ -38,5 +36,3 @@
 .button:hover {
   background-color: #0056b3;
 }
-
-/* Add more styles for other elements like Navbar, Footer, etc., based on your design. */

@@ -13,7 +13,7 @@
   border-radius: 4px;
 }
 
-.item:hover {
+.item:not(.selected):hover {
   background-color: #f0f0f0;
 }
 

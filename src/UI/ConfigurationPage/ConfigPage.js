@@ -3,19 +3,23 @@ import styles from "./ConfigPage.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import ScrollableList from "../../Components/ScrollableList/ScrollableList";
 import Footer from "../../Components/Footer/Footer";
-import Selector from "../../Components/Selector/Selector";
 import axios from "axios";
+import Popup from "../../Components/Popup/Popup";
 
 const ConfigPage = () => {
   const [items, setItems] = useState([]);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [selectedConfigName, setSelectedConfigName] = useState("");
+  const [showSavePopup, setShowSavePopup] = useState(false);
+  const [showLoadPopup, setShowLoadPopup] = useState(false);
+  const [popupState, setPopupState] = useState({ show: false, action: null }); // action can be 'save' or 'load'
+
   const aesOptions = [
     { value: "AesCtr", label: "AES-CTR" },
     { value: "AesGcmSiv", label: "AES-GCM-SIV" },
     { value: "AesCbc", label: "AES-CBC" },
   ];
 
-  const [configData, setConfigData] = useState({
+  const initialConfigData = {
     configName: "",
     secureNet: "",
     secureNetPort: "",
@@ -26,56 +30,33 @@ const ConfigPage = () => {
     unsecureNetSubnetMask: "",
     unsecureNetBandwidth: "",
     aesType: aesOptions[0].value,
-  });
+  };
+
+  const [configData, setConfigData] = useState(initialConfigData);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setConfigData({ ...configData, [name]: value });
   };
 
-  const isFormFilled = () => {
-    return (
-      configData.configName &&
-      configData.secureNet &&
-      configData.secureNetPort &&
-      configData.secureNetSubnetMask &&
-      configData.secureNetBandwidth &&
-      configData.unsecureNet &&
-      configData.unsecureNetPort &&
-      configData.unsecureNetSubnetMask &&
-      configData.unsecureNetBandwidth &&
-      configData.aesType
-    );
-  };
+  const isFormFilled = () => Object.values(configData).every((value) => value);
 
-  const handleSubmit = async (event) => {
+  const handleSave = async (event) => {
     event.preventDefault();
     if (isFormFilled()) {
       try {
         const response = await axios.post(
           "http://127.0.0.1:8080/config/",
-          {
-            config_name: configData.configName,
-            secure_net: configData.secureNet,
-            secure_net_port: configData.secureNetPort,
-            secure_net_subnet_mask: configData.secureNetSubnetMask,
-            secure_net_bandwidth: configData.secureNetBandwidth,
-            unsecure_net: configData.unsecureNet,
-            unsecure_net_port: configData.unsecureNetPort,
-            unsecure_net_subnet_mask: configData.unsecureNetSubnetMask,
-            unsecure_net_bandwidth: configData.unsecureNetBandwidth,
-            aes_type: configData.aesType,
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
+          configData,
+          { headers: { "Content-Type": "application/json" } }
         );
         console.log(response.data);
-        setIsSubmitted(true);
+        setShowSavePopup(false); // Close popup on successful submission
+        setConfigData(initialConfigData); // Reset form on successful submission
+        fetchItems(); // Fetch new items list
       } catch (error) {
         console.error("Error submitting the form", error);
+        // Maybe show an error message to the user here
       }
     } else {
       alert("Please fill out all fields.");
@@ -85,11 +66,7 @@ const ConfigPage = () => {
   const fetchItems = async () => {
     try {
       const response = await axios.get("http://127.0.0.1:8080/config/");
-      if (response.data && Array.isArray(response.data)) {
-        setItems(response.data);
-      } else {
-        console.error("Invalid data format received:", response.data);
-      }
+      setItems(response.data || []);
     } catch (error) {
       console.error("Error fetching items", error);
     }
@@ -97,29 +74,79 @@ const ConfigPage = () => {
 
   useEffect(() => {
     fetchItems();
-  }, []); // Fetch items on component mount
+  }, []);
 
-  useEffect(() => {
-    if (isSubmitted) {
-      fetchItems();
-      setIsSubmitted(false); // Reset the submission state after fetching
+  const handleSaveClick = () => {
+    setPopupState({ show: true, action: "save" });
+    setConfigData({
+      initialConfigData,
+    });
+  };
+
+  const handleItemSelected = (itemName) => {
+    setSelectedConfigName(itemName);
+  };
+
+  const handleLoadClick = async () => {
+    if (!selectedConfigName) {
+      setConfigData(initialConfigData); // Load initial data into configData
+      setPopupState({ show: true, action: "load" });
+      return;
     }
-  }, [isSubmitted]); // Fetch items after form submission
+
+    try {
+      const response = await axios.get(
+        `http://127.0.0.1:8080/config/${selectedConfigName}`
+      );
+      const config = response.data;
+      setConfigData({
+        configName: config.config_name || "",
+        secureNet: config.secure_net || "",
+        secureNetPort: config.secure_net_port || "",
+        secureNetSubnetMask: config.secure_net_subnet_mask || "",
+        secureNetBandwidth: config.secure_net_bandwidth || "",
+        unsecureNet: config.unsecure_net || "",
+        unsecureNetPort: config.unsecure_net_port || "",
+        unsecureNetSubnetMask: config.unsecure_net_subnet_mask || "",
+        unsecureNetBandwidth: config.unsecure_net_bandwidth || "",
+        aesType: config.aes_type || aesOptions[0].value,
+      });
+      setPopupState({ show: true, action: "load" });
+    } catch (error) {
+      console.error("Error fetching configuration", error);
+    }
+  };
 
   return (
     <div className={styles.confPage}>
       <Navbar />
-
       <div className={styles.oldConfigurations}>
-        <ScrollableList items={items} />
+        <ScrollableList items={items} onItemSelected={handleItemSelected} />
         <div className={styles.buttonSection}>
-          <button className={styles.button}>Load</button>
-          <button className={styles.button}>New</button>
+          <button className={styles.button} onClick={handleLoadClick}>
+            Load
+          </button>
+          <button className={styles.button} onClick={handleSaveClick}>
+            New
+          </button>
         </div>
       </div>
+      {popupState.show && (
+        <Popup
+          title={
+            popupState.action === "save"
+              ? "New Configuration"
+              : "Load Configuration"
+          }
+          onClose={() => setPopupState({ show: false, action: null })}
+          show={popupState.show}
+          action={popupState.action}
+          configData={configData}
+          handleInputChange={handleInputChange}
+        />
+      )}
       <Footer />
     </div>
   );
 };
-
 export default ConfigPage;

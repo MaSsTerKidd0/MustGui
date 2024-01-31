@@ -1,0 +1,139 @@
+/* Add more styles for other elements like Navbar, Footer, etc., based on your design. */
+/* ConfigPage.module.css */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background: white;
+  padding: 20px;
+  z-index: 1000;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.5s ease-in-out,
+    opacity 0.5s ease;
+  perspective: 1500px;
+  transition: opacity 2s ease-out;
+}
+
+.popup.hidden {
+  animation: popupAnimation 0.5s ease-out reverse;
+  transform: translate(-50%, -50%) scale(0.9) rotateX(-30deg) rotateY(20deg);
+}
+
+.popup.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1) rotateX(0) rotateY(0);
+
+  animation: popupAnimation 0.5s ease-in-out forwards;
+}
+
+@keyframes popupAnimation {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9) rotateX(-30deg) rotateY(20deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotateX(0) rotateY(0);
+  }
+}
+
+.popup > * {
+  margin-block: 1vmin;
+}
+
+.background-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  z-index: 999; /* Behind the popup, but above other content */
+}
+
+.configForm {
+  height: 50vh;
+  width: 70vw;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  grid-template-rows: auto 1fr; /* Two rows: auto height for the first, remaining space for the second */
+  grid-template-areas:
+    "configName configName"
+    "secureNetColumn unsecureNetColumn";
+}
+
+.configName,
+.secureNet,
+.secureNetPort,
+.secureNetSubnetMask,
+.secureNetBandwidth,
+.unsecureNet,
+.unsecureNetPort,
+.unsecureNetSubnetMask,
+.unsecureNetBandwidth {
+  margin: auto;
+}
+
+.secureNetColumn,
+.unsecureNetColumn,
+.secureNetColumn > div,
+.unsecureNetColumn > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.configName {
+  grid-area: configName;
+}
+
+.secureNetColumn {
+  grid-area: secureNetColumn;
+}
+
+.unsecureNetColumn {
+  grid-area: unsecureNetColumn;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  text-align: center;
+}
+
+input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 15vw;
+}
+.inputField {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%; /* Full width of the container */
+}
+
+.saveButton {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+/* Responsive design for larger screens */
+@media (min-width: 768px) {
+  .inputField {
+    width: 80%; /* Adjust the percentage as needed */
+  }
+}

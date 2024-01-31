@@ -1,11 +1,15 @@
+// ScrollableList.js
 import React, { useState } from "react";
 import styles from "./ScrollableList.module.css";
 
-const ScrollableList = ({ items }) => {
-  const [selectedItems, setSelectedItems] = useState({});
+const ScrollableList = ({ items, onItemSelected }) => {
+  const [selectedItem, setSelectedItem] = useState(null);
 
-  const toggleItemSelection = (item) => {
-    setSelectedItems((prev) => ({ ...prev, [item]: !prev[item] }));
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+    if (onItemSelected) {
+      onItemSelected(item);
+    }
   };
 
   return (
@@ -14,9 +18,9 @@ const ScrollableList = ({ items }) => {
         <div
           key={index}
           className={`${styles.item} ${
-            selectedItems[item] ? `${styles.selected}` : ""
+            selectedItem === item ? styles.selected : ""
           }`}
-          onClick={() => toggleItemSelection(item)}
+          onClick={() => handleItemClick(item)}
         >
           {item}
         </div>
