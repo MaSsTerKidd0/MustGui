@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./Popup.module.css"; // Assuming you have separate CSS for Popup
+import styles from "./Popup.module.css";
+import Selector from "../../Components/Selector/Selector";
 
 const Popup = ({ title, onClose, show, configData, handleInputChange }) => {
   const popupClasses = show
