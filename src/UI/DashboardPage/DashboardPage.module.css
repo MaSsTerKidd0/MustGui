@@ -24,12 +24,13 @@
 }
 
 .gridItem1 {
-  background-color: #8a2be2;
   grid-area: item1;
+  width: 35vw;
 } /* Random color */
 .gridItem2 {
   background-color: #deb887;
   grid-area: item2;
+  width: 65vw;
 } /* Random color */
 .gridItem3 {
   background-color: #5f9ea0; /* This is your item3 color */

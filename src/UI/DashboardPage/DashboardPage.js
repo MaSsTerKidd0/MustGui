@@ -9,12 +9,12 @@ const DashboardPage = () => {
     <div className={styles.dashboard}>
       <Navbar />
       <div className={styles.gridContainer}>
-        <div className={`${styles.gridItem} ${styles.gridItem1}`}>
+        <div className={`${styles.gridItem} ${styles.gridItem1}`}></div>
+        <div className={`${styles.gridItem} ${styles.gridItem2}`}></div>
+        <div className={`${styles.gridItem} ${styles.gridItem3}`}>
           <h1>Real-Time Data Graph</h1>
           <LiveChart />
         </div>
-        <div className={`${styles.gridItem} ${styles.gridItem2}`}></div>
-        <div className={`${styles.gridItem} ${styles.gridItem3}`}></div>
       </div>
       <Footer />
     </div>
