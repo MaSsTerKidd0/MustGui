@@ -108,7 +108,7 @@ a img {
   position: absolute;
   bottom: -15px;
   left: 50%;
-  transform: translateX(-50%) translateY(-200%);
+  transform: translateX(-50%) translateY(-150%);
   border-left: 25px solid transparent;
   border-right: 25px solid transparent;
   border-top: 25px solid transparent;

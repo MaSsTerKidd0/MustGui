@@ -3,6 +3,8 @@ import styles from "./ProfilePage.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 
+import Avatar from "../../assets/pictures/Avatars/appa.png";
+
 const ProfilePage = () => {
   const [nickname, setNickname] = useState("John Doe");
   const [showEditNickname, setShowEditNickname] = useState(false);
@@ -35,8 +37,6 @@ const ProfilePage = () => {
       <div className={styles.profilePageContainer}>
         <div className={styles.userProfile}>
           <div className={styles.profileHeader}>
-            <h2 className={styles.userNsame}>{nickname}</h2>
-            <p className={styles.userTitle}>Software Engineer</p>
             {!showEditNickname && (
               <button onClick={handleEditClick}>Edit Nickname</button>
             )}
@@ -53,7 +53,12 @@ const ProfilePage = () => {
                 </button>
               </div>
             )}
+
+            <h2 className={styles.userName}>{nickname}</h2>
+            <p className={styles.userTitle}>Software Engineer</p>
+            <img src={Avatar} alt="User Avatar" className={styles.userAvatar} />
           </div>
+
           <div className={styles.profileDetails}>
             <h3>About Me</h3>
             {!editAbout ? (

@@ -27,6 +27,15 @@ body {
   align-items: center; /* center horizontally */
 }
 
+button {
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .adminUserManagement h1 {
   margin-bottom: 20px;
 }
@@ -44,10 +53,17 @@ td {
   border: 1px solid #ddd;
 }
 
+tr {
+  position: relative;
+}
+
+th {
+  padding: 8px;
+}
+
 th,
 td {
-  padding: 8px;
-  text-align: left;
+  text-align: center;
   color: #fff;
 }
 
@@ -56,22 +72,10 @@ th {
   color: black;
 }
 
-button {
-  padding: 5px 10px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
 select {
   padding: 5px;
-  border-radius: 4px;
+  height: 100%;
+  width: 100%;
   border: 1px solid #ddd;
   text-align: center;
   align-items: center;
@@ -126,4 +130,59 @@ select {
   color: white;
   font-weight: bolder;
   text-align: center;
+}
+
+.removeBtn {
+  position: relative;
+  width: 3.5vw;
+  height: 3.5vw;
+  border-radius: 25px;
+  border: 2px solid rgb(231, 50, 50);
+  background-color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 10px #333;
+  overflow: hidden;
+  transition: 0.3s;
+  transform: translateX(-125%);
+}
+.removeBtn:hover {
+  background-color: rgb(245, 207, 207);
+  transform: scale(1.15) translateX(-108%);
+  box-shadow: 0 0 4px #111;
+  transition: 0.3s;
+}
+svg {
+  color: rgb(231, 50, 50);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s;
+}
+.removeBtn:focus svg {
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.removeBtn span {
+  width: 25vw;
+  height: inherit;
+  position: absolute;
+  opacity: 0;
+  transform: translate(-50%, -25%);
+  color: rgb(231, 50, 50);
+  font-weight: bold;
+  transition: 0.3s;
+}
+.removeBtn:focus {
+  padding: 1vh;
+  width: 10vw;
+  height: 7vh;
+  transition: 0.3s;
+  transform: translateX(-43.5%);
+}
+
+.removeBtn:focus span {
+  opacity: 1;
+  transition: 0.3s;
 }

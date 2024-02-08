@@ -12,7 +12,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   font-family: Arial, sans-serif;
-  align-items: center; /* Centers horizontally */
+  align-items: center;
 }
 
 .profilePageContainer {
@@ -66,12 +66,6 @@ body {
   margin-top: 20px;
 }
 
-@media (max-width: 768px) {
-  .userProfile {
-    grid-template-columns: 1fr;
-  }
-}
-
 .fixedSizeTextarea {
   resize: none; /* Disables resizing */
   width: 100%; /* Set a fixed width */
@@ -86,27 +80,10 @@ body {
   color: #666; /* Or any color you prefer */
   font-size: 0.9em;
 }
-.button {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-@media (max-width: 768px) {
-  .profilePageContainer {
-    width: 95%; /* Wider on smaller screens for better use of space */
-  }
 
-  .userProfile {
-    grid-template-columns: 1fr; /* Stack elements in a single column */
-  }
-}
-
-@media (max-width: 480px) {
-  .profileHeader,
-  .profileDetails {
-    padding: 10px; /* Reduced padding for smaller screens */
-  }
+.userAvatar {
+  width: 20vw; /* Adjust size as needed */
+  height: 40vh; /* Adjust size as needed */
+  border-radius: 50%; /* Circular avatar */
+  margin-right: 10px;
 }

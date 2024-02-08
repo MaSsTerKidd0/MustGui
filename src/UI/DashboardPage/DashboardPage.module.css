@@ -7,32 +7,74 @@
 
 .gridContainer {
   display: grid;
-  height: 85vh;
-  top: 0;
   grid-template-areas:
-    "item1 item2 item2"
-    "item1 item2 item2"
-    "item3 item3 item3";
-  padding: 0.5vh;
+    "item1 item2"
+    "item3 item3";
   gap: 2vh;
-  grid-template-rows: 25vh 25vh 25vh; /* Three rows for items and one for the footer */
+  grid-template-rows: 50vh 50vh;
+  height: 90vh;
+  padding: 2vh;
 }
 
 .gridItem {
-  display: block;
-  color: white;
+  display: flex; /* Changed to flex for better control over child elements */
+  color: black;
+  border-radius: 8px; /* Added border-radius for styling */
+  padding: 2vh; /* Added padding for internal spacing */
 }
 
 .gridItem1 {
+  display: flex;
   grid-area: item1;
-  width: 35vw;
-} /* Random color */
+  height: 50vh;
+  flex-direction: column;
+  background-color: white;
+  margin: 10px 0 0 10px;
+}
+
 .gridItem2 {
-  background-color: #deb887;
   grid-area: item2;
-  width: 65vw;
-} /* Random color */
+  height: 50vh;
+}
+
 .gridItem3 {
-  background-color: #5f9ea0; /* This is your item3 color */
   grid-area: item3;
+  height: 30vh;
+}
+
+.gridItem3 h1 {
+  font-weight: bold;
+  margin-left: 0;
+}
+
+.connectionStatus,
+.dataTransmissionStatus {
+  display: flex;
+  align-items: center;
+  margin-top: 2vh; /* Unified margin for both status indicators */
+}
+
+.statusIndicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.innerGrid {
+  display: grid;
+  grid-template-columns: auto auto; /* Use 1fr for equal column sizes */
+  grid-template-rows: auto auto; /* Use 1fr for equal row sizes */
+  gap: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+.innerGridItem {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  
+  border-radius: 15px;
 }
