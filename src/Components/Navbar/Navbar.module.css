@@ -37,10 +37,10 @@ h1 {
   padding: 0 10px;
 }
 
-.logo{
+.logo {
   display: flex;
   flex-direction: column;
-  justify-content: center ;
+  justify-content: center;
 }
 
 .nav__brand {
@@ -113,12 +113,12 @@ a img {
 .nav__itemTriangle:before {
   content: "";
   position: absolute;
-  bottom: -15px;
+  bottom: -2vh;
   left: 50%;
   transform: translateX(-50%) translateY(-200%);
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-top: 25px solid transparent;
+  border-left: 1.5vw solid transparent; /* Use vw for responsive width */
+  border-right: 1.5vw solid transparent; /* Use vw for responsive width */
+  border-top: 1.5vw solid transparent; /* Initially transparent, turns white on hover. Use vw for responsive height */
   transition: border-top-color 0.3s ease-in-out;
 }
 .nav__itemTriangle:hover:before {

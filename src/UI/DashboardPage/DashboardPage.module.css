@@ -13,30 +13,25 @@
   gap: 2vh;
   grid-template-rows: 50vh 50vh;
   height: 90vh;
-  padding: 2vh;
+  padding-inline: 2vh;
+  padding-top: 1vh;
 }
 
 .gridItem {
-  display: flex; /* Changed to flex for better control over child elements */
+  display: flex;
   color: black;
-  border-radius: 25px; /* Added border-radius for styling */
-  padding: 2vh; /* Added padding for internal spacing */
 }
 
 .gridItem1 {
-  display: flex;
   grid-area: item1;
-  height: 50vh;
-  flex-direction: column;
   background-color: white;
-  margin: 10px 0 0 10px;
 }
-
 .gridItem2 {
   grid-area: item2;
   height: 50vh;
-  background-color: #fff; 
-  margin: 10px 0 0 10px;
+  background-color: #fff;
+  border: black 4px solid;
+  padding: 1vh;
 }
 
 .gridItem3 {
@@ -46,62 +41,95 @@
 
 .gridItem3 h1 {
   font-weight: bold;
-  margin-left: 0;
 }
 
 .connectionStatus,
 .dataTransmissionStatus {
   display: flex;
   align-items: center;
-  margin-top: 2vh; /* Unified margin for both status indicators */
-}
-
-.statusIndicator {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  margin-right: 10px;
+  justify-content: center;
+  margin-block: 10vh;
 }
 
 .innerGrid {
   display: grid;
-  grid-template-columns: auto auto; /* Use 1fr for equal column sizes */
-  grid-template-rows: auto auto; /* Use 1fr for equal row sizes */
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
   gap: 10px;
   height: 100%;
   width: 100%;
 }
 
-
 .innerGridItem {
-  padding: 10px; 
+  padding: 10px;
   text-align: center;
   border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 15px;
   gap: 15px;
-  background-color: #007ACC; 
-  outline: 3px #007ACC solid;
+  background-color: #007acc;
+  outline: 3px #007acc solid;
   outline-offset: -3px;
   cursor: pointer;
   transition: 400ms;
   color: white;
   font-weight: 700;
   font-size: 1em;
- 
+  border-radius: 25px;
 }
 
 .innerGridItem:hover {
   background-color: #0a4268;
 }
 
-
 .innerGridItem svg path {
   transition: 400ms;
 }
 
 .innerGridItem:hover svg path {
-  fill: #007ACC; /* Hover effect for SVG path color change */
+  fill: #007acc;
+}
+.statusTable {
+  grid-area: item1;
+  width: 100%;
+  background-color: #ffffff; /* Clean white background */
+  color: #333333; /* Soft black for text, easier on the eyes */
+  height: 100%;
+  border-collapse: collapse; /* Merges border for a cleaner look */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; /* Modern, legible font */
+}
+
+.statusTable th,
+.statusTable td {
+  border: 4px solid black;
+  text-align: center;
+  color: #333333; /* Consistent text color with the table */
+}
+
+.statusTable th {
+  background-color: #007acc; /* Slightly different bg for headers */
+  color: white; /* Keeping text color consistent */
+  font-weight: 600; /* Slightly bolder text for headers */
+  font-size: x-large;
+  padding: 2vh;
+}
+
+.statusTable tr:nth-child(even) {
+  background-color: #fafafa; /* Zebra striping for rows */
+}
+
+.statusIndicator {
+  width: 3vh;
+  height: 3vh;
+  border-radius: 50%;
+  display: inline-block; /* Allows it to sit inline with text */
+  margin-right: 5px; /* Spacing between indicator and text */
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23); /* Adds depth */
+  border: 1px solid #ffffff; /* White border for definition */
+  transition: all 0.3s ease; /* Smooth transition for any changes */
 }

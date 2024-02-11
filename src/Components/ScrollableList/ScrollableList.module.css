@@ -1,5 +1,5 @@
 .scrollableDiv {
-  max-height: 65vmin; /* Adjust the height as needed */
+  max-height: 20vmin; /* Adjust the height as needed */
   overflow-y: auto;
   border: 1px solid #ccc;
   padding: 10px;

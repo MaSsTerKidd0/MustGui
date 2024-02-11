@@ -18,10 +18,9 @@ body {
   width: 100vw;
   overflow: hidden;
   background-image: url("../../assets/pictures/wallpaperflare.com_wallpaper.jpg");
-  background-size: cover;
+  object-fit: cover;
+  background-repeat: no-repeat;
 }
-
-
 
 /* Ring styles */
 .ring {

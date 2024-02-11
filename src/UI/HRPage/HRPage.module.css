@@ -40,37 +40,33 @@ button {
   margin-bottom: 20px;
 }
 
-table {
+/* Other styles remain the same, just ensure they are using class selectors */
+.table {
   width: 100%;
   height: 55%;
   border-collapse: collapse;
   margin: 20px 0; /* adds margin on top and bottom */
 }
 
-table,
-th,
-td {
+.table,
+.table th,
+.table td {
   border: 1px solid #ddd;
 }
 
-tr {
-  position: relative;
-}
-
-th {
+.table th,
+.table td {
   padding: 8px;
-}
-
-th,
-td {
   text-align: center;
   color: #fff;
 }
 
-th {
+.table th {
   background-color: #f2f2f2;
   color: black;
 }
+
+/* Continue converting other selectors to class-based as shown above */
 
 select {
   padding: 5px;
@@ -151,6 +147,7 @@ select {
   box-shadow: 0 0 4px #111;
   transition: 0.3s;
 }
+
 svg {
   color: rgb(231, 50, 50);
   position: absolute;
@@ -176,10 +173,10 @@ svg {
 }
 .removeBtn:focus {
   padding: 1vh;
-  width: 10vw;
+  width: 12vw;
   height: 7vh;
   transition: 0.3s;
-  transform: translateX(-43.5%);
+  transform: translateX(-45%);
 }
 
 .removeBtn:focus span {

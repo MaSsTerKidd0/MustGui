@@ -1,49 +1,53 @@
-/* Button.module.css */
 .btn {
-    position: relative; /* Add this line */
-    border: none;
-    width: 10vw;
-    height: 5vh;
-    border-radius: 3em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    background: #1C1A1C;
-    cursor: pointer;
-    margin-top: 3vh;
-    transition: all 450ms ease-in-out;
-  }
-  
-  .sparkle {
-    position: absolute; /* Position the icon absolutely within the button */
-    left: 16px; /* Adjust this value to position the sparkle to the left as desired */
-    fill: rgba(255, 255, 255, 0.4);
-    transition: fill 800ms ease, transform 800ms ease;
-    transform: translateY(-45%) translateX(100%);
-  }
-  
-  .text {
-    font-weight: 600;
-    color: #AAAAAA;
-    font-size: medium;
-    transform: translateX(15%);
-  }
-  
-  .btn:hover {
-    background: linear-gradient(0deg,#A47CF3,#683FEA);
-    box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+  display: grid; /* Enable grid layout */
+  grid-template-columns: auto auto; /* Define two columns */
+  grid-template-areas: "icon text"; /* Name the areas */
+  align-items: center; /* Center items vertically */
+  gap: 2vh; /* Space between icon and text */
+  border: none;
+  width: fit-content; /* Adjust width to fit its content */
+  padding: 8px 16px; /* Padding around content */
+  height: auto; /* Adjust height automatically */
+  border-radius: 3em;
+  background: #1c1a1c;
+  cursor: pointer;
+  transition: all 450ms ease-in-out;
+  margin-top: 2vh;
+}
+
+.sparkle {
+  grid-area: icon;
+  position: relative;
+  inset: 0 0 0 0;
+  transform: translate(20%, 0%);
+
+  fill: rgba(255, 255, 255, 0.4);
+  transition:
+    fill 800ms ease,
+    transform 800ms ease;
+}
+
+.text {
+  grid-area: text; /* Assign the text to the "text" area */
+  color: #aaaaaa; /* Existing styles */
+  font-weight: 600;
+  font-size: medium;
+}
+
+.btn:hover {
+  background: linear-gradient(0deg, #a47cf3, #683fea);
+  box-shadow:
+    inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
     inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
     0px 0px 0px 4px rgba(255, 255, 255, 0.2),
-    0px 0px 180px 0px #9917FF;
-    transform: translateY(-2px);
-  }
-  
-  .btn:hover .text {
-    color: white;
-  }
-  
-  .btn:hover .sparkle {
-    fill: white;
-  }
-  
+    0px 0px 180px 0px #9917ff;
+  transform: translateY(-2px);
+}
+
+.btn:hover .text {
+  color: white;
+}
+
+.btn:hover .sparkle {
+  fill: white;
+}

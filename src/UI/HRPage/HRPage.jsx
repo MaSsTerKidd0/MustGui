@@ -99,7 +99,7 @@ const AdminUserManagement = () => {
             <button type="button" onClick={handleAddUser}>
               Add New User
             </button>
-            <table>
+            <table className={styles.table}>
               <thead>
                 <tr>
                   <th>Username</th>
@@ -112,6 +112,7 @@ const AdminUserManagement = () => {
                 {paginatedUsers.map(({ id, username, createDate, role }) => (
                   <tr key={id}>
                     <td>
+                      {/* Use styles object for removeBtn and other classes as necessary */}
                       <button
                         className={styles.removeBtn}
                         type="button"
@@ -142,6 +143,9 @@ const AdminUserManagement = () => {
                       <select
                         value={role}
                         onChange={(e) => handleChangeRole(id, e.target.value)}
+                        className={
+                          styles.select
+                        } /* Ensure you have .select styles defined */
                       >
                         <option value="User">User</option>
                         <option value="Moderator">Moderator</option>
@@ -151,6 +155,7 @@ const AdminUserManagement = () => {
                 ))}
               </tbody>
             </table>
+
             <div className={styles.pagination}>
               <button
                 type="button"

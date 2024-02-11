@@ -4,7 +4,6 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import axios from "axios";
 import LiveChart from "../../Components/LiveChart/LiveChart";
-import ScrollableList from "../../Components/ScrollableList/ScrollableList";
 
 const DashboardPage = () => {
   const [items, setItems] = useState([]);
@@ -33,28 +32,70 @@ const DashboardPage = () => {
     <div className={styles.dashboard}>
       <Navbar />
       <div className={styles.gridContainer}>
-        <div className={`${styles.gridItem} ${styles.gridItem1}`}>
-          <div className={styles.connectionStatus}>
-            <span
-              className={styles.statusIndicator}
-              style={{ backgroundColor: isConnected ? "green" : "red" }}
-            ></span>
-            <span>
-              {isConnected
-                ? "Connection Established"
-                : "Connection Not Established"}
-            </span>
-          </div>
-          <div className={styles.dataTransmissionStatus}>
-            <span
-              className={styles.statusIndicator}
-              style={{ backgroundColor: isDataTransmitted ? "green" : "red" }}
-            ></span>
-            <span>
-              {isDataTransmitted ? "Data Transmitted" : "Data Not Transmitted"}
-            </span>
-          </div>
-        </div>
+        <table className={`${styles.statusTable} ${styles.gridItem1}`}>
+          <thead>
+            <tr>
+              <th>Secure Status</th>
+              <th>Unsecure Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div className={styles.connectionStatus}>
+                  <span
+                    className={styles.statusIndicator}
+                    style={{ backgroundColor: isConnected ? "green" : "red" }}
+                  ></span>
+                  <span>
+                    {isConnected
+                      ? "Connection Established"
+                      : "Connection Not Established"}
+                  </span>
+                </div>
+                <div className={styles.dataTransmissionStatus}>
+                  <span
+                    className={styles.statusIndicator}
+                    style={{
+                      backgroundColor: isDataTransmitted ? "green" : "red",
+                    }}
+                  ></span>
+                  <span>
+                    {isDataTransmitted
+                      ? "Data Transmitted"
+                      : "Data Not Transmitted"}
+                  </span>
+                </div>
+              </td>
+              <td>
+                <div className={styles.connectionStatus}>
+                  <span
+                    className={styles.statusIndicator}
+                    style={{ backgroundColor: isConnected ? "green" : "red" }}
+                  ></span>
+                  <span>
+                    {isConnected
+                      ? "Connection Established"
+                      : "Connection Not Established"}
+                  </span>
+                </div>
+                <div className={styles.dataTransmissionStatus}>
+                  <span
+                    className={styles.statusIndicator}
+                    style={{
+                      backgroundColor: isDataTransmitted ? "green" : "red",
+                    }}
+                  ></span>
+                  <span>
+                    {isDataTransmitted
+                      ? "Data Transmitted"
+                      : "Data Not Transmitted"}
+                  </span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <div className={`${styles.gridItem} ${styles.gridItem2}`}>
           <div className={styles.innerGrid}>
             <button className={styles.innerGridItem}>Graph 1</button>
