@@ -37,14 +37,21 @@ h1 {
   padding: 0 10px;
 }
 
+.logo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center ;
+}
+
 .nav__brand {
   font-family: "Poppins", sans-serif;
-  font-size: 5vh; /* Responsive font size */
+  font-size: 4.5vh; /* Responsive font size */
   color: transparent;
   position: relative;
   -webkit-text-stroke: 0.2vw #03a9f4; /* Responsive text stroke */
   stroke: 0.2vw #03a9f4;
   white-space: nowrap; /* Prevent wrapping on small screens */
+  transform: translateX(12%);
 }
 
 .nav__brand:before {
@@ -108,7 +115,7 @@ a img {
   position: absolute;
   bottom: -15px;
   left: 50%;
-  transform: translateX(-50%) translateY(-150%);
+  transform: translateX(-50%) translateY(-200%);
   border-left: 25px solid transparent;
   border-right: 25px solid transparent;
   border-top: 25px solid transparent;

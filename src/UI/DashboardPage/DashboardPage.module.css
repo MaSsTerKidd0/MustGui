@@ -19,7 +19,7 @@
 .gridItem {
   display: flex; /* Changed to flex for better control over child elements */
   color: black;
-  border-radius: 8px; /* Added border-radius for styling */
+  border-radius: 25px; /* Added border-radius for styling */
   padding: 2vh; /* Added padding for internal spacing */
 }
 
@@ -35,6 +35,8 @@
 .gridItem2 {
   grid-area: item2;
   height: 50vh;
+  background-color: #fff; 
+  margin: 10px 0 0 10px;
 }
 
 .gridItem3 {
@@ -70,11 +72,36 @@
   width: 100%;
 }
 
+
 .innerGridItem {
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  padding: 10px;
+  padding: 10px; 
   text-align: center;
-  
   border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  gap: 15px;
+  background-color: #007ACC; 
+  outline: 3px #007ACC solid;
+  outline-offset: -3px;
+  cursor: pointer;
+  transition: 400ms;
+  color: white;
+  font-weight: 700;
+  font-size: 1em;
+ 
+}
+
+.innerGridItem:hover {
+  background-color: #0a4268;
+}
+
+
+.innerGridItem svg path {
+  transition: 400ms;
+}
+
+.innerGridItem:hover svg path {
+  fill: #007ACC; /* Hover effect for SVG path color change */
 }

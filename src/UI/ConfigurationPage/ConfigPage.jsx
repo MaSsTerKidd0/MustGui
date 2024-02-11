@@ -5,6 +5,8 @@ import ScrollableList from "../../Components/ScrollableList/ScrollableList";
 import Footer from "../../Components/Footer/Footer";
 import axios from "axios";
 import Popup from "../../Components/Popup/Popup";
+import CopyTextBlock from "../../Components/CopTextBlock/CopyTextBlock";
+import GenerateButton from "../../Components/GenerateButton/GenerateButton";
 
 const ConfigPage = () => {
   const [items, setItems] = useState([]);
@@ -120,6 +122,8 @@ const ConfigPage = () => {
   return (
     <div className={styles.confPage}>
       <Navbar />
+      <CopyTextBlock/>
+      <GenerateButton/>
       <div className={styles.oldConfigurations}>
         <ScrollableList items={items} onItemSelected={handleItemSelected} />
         <div className={styles.buttonSection}>

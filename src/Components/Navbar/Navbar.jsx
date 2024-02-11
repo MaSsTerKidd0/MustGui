@@ -2,11 +2,15 @@ import React from "react";
 import styles from "./Navbar.module.css";
 import PersonIcon from "../../assets/pictures/person_icon.png";
 import { Link as MuiLink } from "@mui/material";
+import DateTimeDisplay from "../DateTimeDisplay/DateTimeDisplay";
 
 function Navbar() {
   return (
     <nav className={styles.nav}>
+      <div className={styles.logo}>
       <h1 className={styles.nav__brand}>Must</h1>
+      <DateTimeDisplay/>
+      </div>
       <ul className={styles.nav__menu}>
         <li className={`${styles.nav__item} ${styles.nav__itemTriangle}`}>
           <MuiLink href="/AboutUs" className={styles.nav__link}>

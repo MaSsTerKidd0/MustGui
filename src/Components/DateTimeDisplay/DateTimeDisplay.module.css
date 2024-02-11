@@ -1,0 +1,12 @@
+
+
+.dateTimeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;}
+
+.dateTimeText {
+    font-size: 1.5rem;
+    color: #fff;
+    transform: translateY(-50%);
+}

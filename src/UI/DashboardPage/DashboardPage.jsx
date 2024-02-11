@@ -57,10 +57,10 @@ const DashboardPage = () => {
         </div>
         <div className={`${styles.gridItem} ${styles.gridItem2}`}>
           <div className={styles.innerGrid}>
-            <div className={styles.innerGridItem}>Graph 1</div>
-            <div className={styles.innerGridItem}>Graph 2</div>
-            <div className={styles.innerGridItem}>Graph 3</div>
-            <div className={styles.innerGridItem}>Graph 4</div>
+            <button className={styles.innerGridItem}>Graph 1</button>
+            <button className={styles.innerGridItem}>Graph 2</button>
+            <button className={styles.innerGridItem}>Graph 3</button>
+            <button className={styles.innerGridItem}>Graph 4</button>
           </div>
         </div>
         <div className={`${styles.gridItem} ${styles.gridItem3}`}>

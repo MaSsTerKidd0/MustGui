@@ -1,0 +1,38 @@
+/* CopyTextBlock.module.css */
+.container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "text copy";
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    width: 80vw;
+    margin-top: 2%;
+    background-color: #333;
+  }
+  
+  .text {
+    grid-area: text;
+    font-size: large;
+    overflow-wrap: break-word; /* Allows unbreakable words to be broken */
+    word-break: break-all; /* Use this if you want to break long words at any character */
+    white-space: pre-wrap; /* Maintains whitespace formatting and allows normal wrapping */
+  }
+  
+  .copyButton {
+    grid-area: copy;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    height: 4vh;
+    background-color: transparent;
+    
+}
+.copyButton img{
+    filter: brightness(0) invert(1);
+}
