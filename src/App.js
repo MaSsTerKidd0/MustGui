@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,24 +12,40 @@ import ProfilePage from "./UI/ProfilePage/ProfilePage";
 import AboutUsPage from "./UI/AboutPage/AboutPage";
 import ConfigPage from "./UI/ConfigurationPage/ConfigPage";
 import AdminUserManagement from "./UI/HRPage/HRPage";
-
+import Logo from "./Components/Logo/Logo";
 import cursorLevi from "./assets/pictures/Levi_Airplane_32x32.png";
+import Loader from "./Components/Loader/Loader";
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
   return (
-    <div style={{ cursor: `url(${cursorLevi}), auto` }}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/AboutUs" element={<AboutUsPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/config" element={<ConfigPage />} />
-          <Route path="/HR" element={<AdminUserManagement />} />
-        </Routes>
-      </Router>
-    </div>
+    <>
+      <Logo />
+      <div style={{ cursor: `url(${cursorLevi}), auto` }}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/AboutUs" element={<AboutUsPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/config" element={<ConfigPage />} />
+            <Route path="/HR" element={<AdminUserManagement />} />
+          </Routes>
+        </Router>
+      </div>
+    </>
   );
 };
 

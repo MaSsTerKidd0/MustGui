@@ -8,8 +8,8 @@ function Navbar() {
   return (
     <nav className={styles.nav}>
       <div className={styles.logo}>
-      <h1 className={styles.nav__brand}>Must</h1>
-      <DateTimeDisplay/>
+        <h1 className={styles.nav__brand}>Must</h1>
+        <DateTimeDisplay/>
       </div>
       <ul className={styles.nav__menu}>
         <li className={`${styles.nav__item} ${styles.nav__itemTriangle}`}>

@@ -1,0 +1,29 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjusted to remove the duplicate property */
+  position: relative;
+  animation: spin 5s linear infinite;
+}
+
+.innerImage {
+  position: absolute; /* Keep the inner image absolutely positioned */
+  height: 25vh; /* Adjust the height accordingly */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; /* This centers the image both horizontally and vertically */
+  z-index: 2; /* Ensure it's above other positioned elements if necessary */
+  transform: translateX(8%);
+}
