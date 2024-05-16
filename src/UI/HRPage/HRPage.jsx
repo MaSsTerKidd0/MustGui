@@ -1,63 +1,68 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styles from "./HRPage.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
+import NewUserModal from "../../Components/NewUserModal/NewUserModal";
 
 const AdminUserManagement = () => {
-  const users = [
-    { id: 1, username: "user1", createDate: "2023-01-01", role: "User" },
-    { id: 2, username: "user2", createDate: "2023-01-02", role: "User" },
-    { id: 3, username: "user3", createDate: "2023-01-28", role: "Moderator" },
-    { id: 4, username: "user4", createDate: "2023-07-12", role: "User" },
-    { id: 5, username: "user5", createDate: "2023-04-17", role: "Moderator" },
-    { id: 6, username: "user6", createDate: "2023-09-23", role: "Moderator" },
-    { id: 7, username: "user7", createDate: "2023-02-15", role: "User" },
-    { id: 8, username: "user8", createDate: "2023-06-09", role: "User" },
-    { id: 9, username: "user9", createDate: "2023-05-20", role: "Moderator" },
-    { id: 10, username: "user10", createDate: "2023-03-11", role: "User" },
-    { id: 11, username: "user11", createDate: "2023-08-05", role: "Moderator" },
-    { id: 12, username: "user12", createDate: "2023-10-19", role: "Moderator" },
-    { id: 13, username: "user13", createDate: "2023-11-22", role: "User" },
-    { id: 14, username: "user14", createDate: "2023-12-13", role: "User" },
-    { id: 15, username: "user15", createDate: "2023-04-07", role: "Moderator" },
-    { id: 16, username: "user16", createDate: "2023-05-18", role: "Moderator" },
-    { id: 17, username: "user17", createDate: "2023-06-22", role: "User" },
-    { id: 18, username: "user18", createDate: "2023-07-03", role: "User" },
-    { id: 19, username: "user19", createDate: "2023-08-14", role: "Moderator" },
-    { id: 20, username: "user20", createDate: "2023-09-25", role: "User" },
-  ];
+  const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // State for window dimensions
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
   // State for pagination
-  const [currentPage, setCurrentPage] = useState(1); // Added this line
+  const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage, setUsersPerPage] = useState(
     calculateUsersPerPage(windowWidth, windowHeight)
   );
-  const [totalPages, setTotalPages] = useState(
-    Math.ceil(users.length / usersPerPage)
-  );
+  const [totalPages, setTotalPages] = useState(1);
 
-  // Handlers for user actions
+  const [showModal, setShowModal] = useState(false);
+
   const handleAddUser = () => {
-    /* ... */
+    setShowModal(true);
   };
-  const handleRemoveUser = () => {
-    /* ... */
+
+  const handleSaveNewUser = async (username, password, role) => {
+    // API call to save the new user
+    try {
+      const payload = { username, password, role };
+      await axios.post("http://127.0.0.1:8080/HR/insertUser", payload);
+      setShowModal(false);
+      // Optionally refresh user list or handle updates
+    } catch (error) {
+      console.error("Failed to add user:", error);
+    }
+    setShowModal(false);
   };
-  const handleChangeRole = (userId, newRole) => {
-    /* ... */
+
+  const handleRemoveUser = async (username) => {
+    try {
+      await axios.delete(`http://127.0.0.1:8080/HR/deleteUser/${username}`);
+      // Optionally refresh user list or handle updates
+      const updatedUsers = users.filter((user) => user.username !== username);
+      setUsers(updatedUsers);
+    } catch (error) {
+      console.error("Failed to remove user:", error);
+    }
+  };
+
+  const handleChangeRole = (username, newRole) => {
+    // Implement the logic to change the role of the user with the given username
+    console.log("Change role for user:", username, "to", newRole);
   };
 
   // Pagination handlers
   const handlePrevPage = () => {
-    setCurrentPage((prev) => Math.max(prev - 1, 1)); // Now works correctly
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
   };
 
   const handleNextPage = () => {
-    setCurrentPage((prev) => Math.min(prev + 1, totalPages)); // Now works correctly
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   };
 
   // Calculate the users to be shown on the current page
@@ -75,6 +80,24 @@ const AdminUserManagement = () => {
     );
   };
 
+  // Fetch users from the server
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        setIsLoading(true);
+        const response = await axios.get("http://127.0.0.1:8080/HR/getUsers");
+        setUsers(response.data);
+        setTotalPages(Math.ceil(response.data.length / usersPerPage));
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, [usersPerPage]);
+
   // Effect for window resize
   useEffect(() => {
     window.addEventListener("resize", handleResize);
@@ -87,8 +110,9 @@ const AdminUserManagement = () => {
   // Effect for pagination updates
   useEffect(() => {
     setTotalPages(Math.ceil(users.length / usersPerPage));
-    setCurrentPage((prev) => Math.min(prev, totalPages)); // Ensure currentPage is not out of range
+    setCurrentPage((prev) => Math.min(1, totalPages));
   }, [windowWidth, windowHeight, usersPerPage, users.length, totalPages]);
+
   return (
     <>
       <Navbar />
@@ -99,6 +123,12 @@ const AdminUserManagement = () => {
             <button type="button" onClick={handleAddUser}>
               Add New User
             </button>
+            {/* Render the NewUserModal here */}
+            <NewUserModal
+              show={showModal}
+              onClose={() => setShowModal(false)}
+              onSave={handleSaveNewUser}
+            />
             <table className={styles.table}>
               <thead>
                 <tr>
@@ -109,50 +139,43 @@ const AdminUserManagement = () => {
                 </tr>
               </thead>
               <tbody>
-                {paginatedUsers.map(({ id, username, createDate, role }) => (
-                  <tr key={id}>
-                    <td>
-                      {/* Use styles object for removeBtn and other classes as necessary */}
-                      <button
-                        className={styles.removeBtn}
-                        type="button"
-                        onClick={() => handleRemoveUser(id)}
-                      >
-                        <span>CONFIRM DELETE</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="25"
-                          height="25"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth="2"
+                {paginatedUsers.map(
+                  ({ username, created_at, password, role }) => (
+                    <tr key={username}>
+                      <td>
+                        <button
+                          className={styles.removeBtn}
+                          type="button"
+                          onClick={() => handleRemoveUser(username)}
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                          />
-                        </svg>
-                      </button>
-                      {username}
-                    </td>
-                    <td>{createDate}</td>
-                    <td>••••••••</td>
-                    <td>
-                      <select
-                        value={role}
-                        onChange={(e) => handleChangeRole(id, e.target.value)}
-                        className={
-                          styles.select
-                        } /* Ensure you have .select styles defined */
-                      >
-                        <option value="User">User</option>
-                        <option value="Moderator">Moderator</option>
-                      </select>
-                    </td>
-                  </tr>
-                ))}
+                          <span>CONFIRM DELETE</span>
+                          {/* SVG code here */}
+                        </button>
+                        {username}
+                      </td>
+                      <td>
+                        {new Date(created_at).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "2-digit",
+                          day: "2-digit",
+                        })}
+                      </td>
+                      <td>{password}</td>
+                      <td>
+                        <select
+                          value={role}
+                          onChange={(e) =>
+                            handleChangeRole(username, e.target.value)
+                          }
+                          className={styles.select}
+                        >
+                          <option value="User">User</option>
+                          <option value="PermittedUser">Moderator</option>
+                        </select>
+                      </td>
+                    </tr>
+                  )
+                )}
               </tbody>
             </table>
 
@@ -182,12 +205,13 @@ const AdminUserManagement = () => {
     </>
   );
 };
+
 function calculateUsersPerPage(width, height) {
   const area = width * height;
-  if (area > 3000000) return 15; // Large screens
-  else if (area > 2000000) return 10; // Medium screens
-  else if (area > 1000000) return 7; // Small-medium screens
-  else return 5; // Small screens
+  if (area > 3000000) return 15;
+  else if (area > 2000000) return 10;
+  else if (area > 1000000) return 7;
+  else return 5;
 }
 
 export default AdminUserManagement;

@@ -1,3 +1,4 @@
+// App.js
 import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -15,20 +16,22 @@ import AdminUserManagement from "./UI/HRPage/HRPage";
 import Logo from "./Components/Logo/Logo";
 import cursorLevi from "./assets/pictures/Levi_Airplane_32x32.png";
 import Loader from "./Components/Loader/Loader";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 500);
-
+    }, 750);
     return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
     return <Loader />;
   }
+
   return (
     <>
       <Logo />
@@ -40,8 +43,16 @@ const App = () => {
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/AboutUs" element={<AboutUsPage />} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/config" element={<ConfigPage />} />
-            <Route path="/HR" element={<AdminUserManagement />} />
+            <Route
+              path="/config"
+              element={<ProtectedRoute path="/config" component={ConfigPage} />}
+            />
+            <Route
+              path="/HR"
+              element={
+                <ProtectedRoute path="/HR" component={AdminUserManagement} />
+              }
+            />
           </Routes>
         </Router>
       </div>

@@ -37,23 +37,6 @@ const ProfilePage = () => {
       <div className={styles.profilePageContainer}>
         <div className={styles.userProfile}>
           <div className={styles.profileHeader}>
-            {!showEditNickname && (
-              <button onClick={handleEditClick}>Edit Nickname</button>
-            )}
-            {showEditNickname && (
-              <div>
-                <input
-                  type="text"
-                  value={newNickname}
-                  onChange={(e) => setNewNickname(e.target.value)}
-                />
-                <button onClick={handleChangeNickname}>Save</button>
-                <button onClick={() => setShowEditNickname(false)}>
-                  Cancel
-                </button>
-              </div>
-            )}
-
             <h2 className={styles.userName}>{nickname}</h2>
             <p className={styles.userTitle}>Software Engineer</p>
             <img src={Avatar} alt="User Avatar" className={styles.userAvatar} />

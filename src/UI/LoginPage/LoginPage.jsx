@@ -10,22 +10,16 @@ const LoginPage = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8080/login/",
-        {
-          username,
-          password,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.post("http://127.0.0.1:8080/login/", {
+        username,
+        password,
+      });
 
       if (response.status === 200) {
-        console.log(response.data);
+        // Store the session token in local storage
+        localStorage.setItem("authToken", response.data.token);
         navigate("/dashboard");
       } else {
         console.error("Login failed");

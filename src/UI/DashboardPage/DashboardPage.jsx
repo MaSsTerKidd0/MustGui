@@ -3,29 +3,65 @@ import styles from "./DashboardPage.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import axios from "axios";
-import LiveChart from "../../Components/LiveChart/LiveChart";
+import ChartPopup from "../../Components/LiveChart/ChartPopup";
 
 const DashboardPage = () => {
-  const [items, setItems] = useState([]);
   const [selectedConfigName, setSelectedConfigName] = useState("");
-  const [isConnected, setIsConnected] = useState(false);
-  const [isDataTransmitted, setIsDataTransmitted] = useState(false);
-
-  const fetchItems = async () => {
-    try {
-      const response = await axios.get("http://127.0.0.1:8080/config/");
-      setItems(response.data || []);
-    } catch (error) {
-      console.error("Error fetching items", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchItems();
-  }, []);
+  const [connectionStatus, setConnectionStatus] = useState({
+    connection_established: false,
+    data_transmitted: false,
+  });
+  const [showChartPopup, setShowChartPopup] = useState(false);
+  const [selectedNetwork, setSelectedNetwork] = useState(null);
 
   const handleItemSelected = (itemName) => {
     setSelectedConfigName(itemName);
+  };
+
+  const handleNetworkSelected = (network) => {
+    setSelectedNetwork(network);
+    setShowChartPopup(true);
+  };
+
+  const closeChartPopup = () => {
+    setShowChartPopup(false);
+    setSelectedNetwork(null);
+  };
+
+  useEffect(() => {
+    const fetchConnectionStatus = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/dashboard/connectionStatus"
+        );
+        setConnectionStatus(response.data);
+      } catch (error) {
+        console.error("Error fetching connection status:", error);
+      }
+    };
+
+    fetchConnectionStatus();
+    const interval = setInterval(fetchConnectionStatus, 5000); // Fetch status every 5 seconds
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  // Helper function to get the network name
+  const getNetworkName = (network) => {
+    switch (network) {
+      case "incomingUnsecure":
+        return "Incoming Data Unsecure";
+      case "outgoingUnsecure":
+        return "Outgoing Data Unsecure";
+      case "incomingSecure":
+        return "Incoming Data Secure";
+      case "outgoingSecure":
+        return "Outgoing Data Secure";
+      default:
+        return "Real-Time Data Graph";
+    }
   };
 
   return (
@@ -45,10 +81,14 @@ const DashboardPage = () => {
                 <div className={styles.connectionStatus}>
                   <span
                     className={styles.statusIndicator}
-                    style={{ backgroundColor: isConnected ? "green" : "red" }}
-                  ></span>
+                    style={{
+                      backgroundColor: connectionStatus.connection_established
+                        ? "green"
+                        : "red",
+                    }}
+                  />
                   <span>
-                    {isConnected
+                    {connectionStatus.connection_established
                       ? "Connection Established"
                       : "Connection Not Established"}
                   </span>
@@ -57,11 +97,13 @@ const DashboardPage = () => {
                   <span
                     className={styles.statusIndicator}
                     style={{
-                      backgroundColor: isDataTransmitted ? "green" : "red",
+                      backgroundColor: connectionStatus.data_transmitted
+                        ? "green"
+                        : "red",
                     }}
-                  ></span>
+                  />
                   <span>
-                    {isDataTransmitted
+                    {connectionStatus.data_transmitted
                       ? "Data Transmitted"
                       : "Data Not Transmitted"}
                   </span>
@@ -71,10 +113,14 @@ const DashboardPage = () => {
                 <div className={styles.connectionStatus}>
                   <span
                     className={styles.statusIndicator}
-                    style={{ backgroundColor: isConnected ? "green" : "red" }}
-                  ></span>
+                    style={{
+                      backgroundColor: connectionStatus.connection_established
+                        ? "green"
+                        : "red",
+                    }}
+                  />
                   <span>
-                    {isConnected
+                    {connectionStatus.connection_established
                       ? "Connection Established"
                       : "Connection Not Established"}
                   </span>
@@ -83,11 +129,13 @@ const DashboardPage = () => {
                   <span
                     className={styles.statusIndicator}
                     style={{
-                      backgroundColor: isDataTransmitted ? "green" : "red",
+                      backgroundColor: connectionStatus.data_transmitted
+                        ? "green"
+                        : "red",
                     }}
-                  ></span>
+                  />
                   <span>
-                    {isDataTransmitted
+                    {connectionStatus.data_transmitted
                       ? "Data Transmitted"
                       : "Data Not Transmitted"}
                   </span>
@@ -98,15 +146,40 @@ const DashboardPage = () => {
         </table>
         <div className={`${styles.gridItem} ${styles.gridItem2}`}>
           <div className={styles.innerGrid}>
-            <button className={styles.innerGridItem}>Graph 1</button>
-            <button className={styles.innerGridItem}>Graph 2</button>
-            <button className={styles.innerGridItem}>Graph 3</button>
-            <button className={styles.innerGridItem}>Graph 4</button>
+            <button
+              className={styles.innerGridItem}
+              onClick={() => handleNetworkSelected("incomingUnsecure")}
+            >
+              Incoming Data Unsecure
+            </button>
+            <button
+              className={styles.innerGridItem}
+              onClick={() => handleNetworkSelected("outgoingUnsecure")}
+            >
+              Outgoing Data Unsecure
+            </button>
+            <button
+              className={styles.innerGridItem}
+              onClick={() => handleNetworkSelected("incomingSecure")}
+            >
+              Incoming Data Secure
+            </button>
+            <button
+              className={styles.innerGridItem}
+              onClick={() => handleNetworkSelected("outgoingSecure")}
+            >
+              Outgoing Data Secure
+            </button>
           </div>
         </div>
         <div className={`${styles.gridItem} ${styles.gridItem3}`}>
-          <h1>Real-Time Data Graph</h1>
-          <LiveChart />
+          {showChartPopup && (
+            <ChartPopup
+              network={selectedNetwork}
+              networkName={getNetworkName(selectedNetwork)}
+              onClose={closeChartPopup}
+            />
+          )}
         </div>
       </div>
       <Footer />

@@ -1,0 +1,90 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65vw;
+  height: 75vh;
+  overflow-y: auto;
+  background: white;
+  padding: 4vh;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: solid 0.5vh #f44336;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.newUserForm {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputField {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 20vw;
+}
+
+.roleSelector {
+  grid-column: span 2;
+}
+
+.saveButton {
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #4caf50;
+  color: white;
+  width: 50vw;
+  margin-top: auto; /* Push the button to the bottom */
+}
+
+.closeButton {
+  background-color: #f44336;
+  color: white;
+  border-radius: 50%;
+  width: 8vh;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 0;
+  position: absolute;
+  top: 2vh;
+  right: 2vw;
+  z-index: 1000;
+}
+
+.saveButton:hover {
+  background-color: #45a049;
+}
+
+.closeButton:hover {
+  background-color: #d32f2f;
+}
