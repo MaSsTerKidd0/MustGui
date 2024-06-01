@@ -7,6 +7,8 @@ import NewUserModal from "../../Components/NewUserModal/NewUserModal";
 
 const AdminUserManagement = () => {
   const [users, setUsers] = useState([]);
+  const [confirmDelete, setConfirmDelete] = useState(null); // State to track confirmation
+
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -41,16 +43,25 @@ const AdminUserManagement = () => {
   };
 
   const handleRemoveUser = async (username) => {
-    try {
-      await axios.delete(`http://127.0.0.1:8080/HR/deleteUser/${username}`);
-      // Optionally refresh user list or handle updates
-      const updatedUsers = users.filter((user) => user.username !== username);
-      setUsers(updatedUsers);
-    } catch (error) {
-      console.error("Failed to remove user:", error);
+    if (confirmDelete === username) {
+      // If already in confirm delete state, proceed with deletion
+      try {
+        await axios.delete(`http://127.0.0.1:8080/HR/deleteUser/${username}`);
+        // Filter out any duplicates from the existing users state
+        const uniqueUsers = Array.from(new Set(users));
+        const updatedUsers = uniqueUsers.filter(
+          (user) => user.username !== username
+        );
+        setUsers(updatedUsers);
+        setConfirmDelete(null); // Reset the confirmation state
+      } catch (error) {
+        console.error("Failed to remove user:", error);
+      }
+    } else {
+      // Set this user as the one needing confirmation
+      setConfirmDelete(username);
     }
   };
-
   const handleChangeRole = (username, newRole) => {
     // Implement the logic to change the role of the user with the given username
     console.log("Change role for user:", username, "to", newRole);
@@ -80,7 +91,6 @@ const AdminUserManagement = () => {
     );
   };
 
-  // Fetch users from the server
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -97,15 +107,6 @@ const AdminUserManagement = () => {
 
     fetchUsers();
   }, [usersPerPage]);
-
-  // Effect for window resize
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   // Effect for pagination updates
   useEffect(() => {

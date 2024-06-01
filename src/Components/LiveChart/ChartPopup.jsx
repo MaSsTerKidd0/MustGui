@@ -3,7 +3,7 @@ import styles from "./ChartPopup.module.css";
 import LiveChart from "./LiveChart";
 
 const ChartPopup = ({ network, networkName, onClose }) => {
-  console.log("ChartPopup rendered with network:", network); // Add this log
+  console.log("ChartPopup rendered with network:", network);
 
   return (
     <div className={styles.popupContainer}>

@@ -1,39 +1,36 @@
 // CopyTextBlock.js
-import React, { useEffect, useState } from 'react';
-import styles from './CopyTextBlock.module.css';
-import CopyIcon from '../../assets/pictures/CopyIcon.png';
-import axios from 'axios';
-
+import React, { useEffect, useState } from "react";
+import styles from "./CopyTextBlock.module.css";
+import CopyIcon from "../../assets/pictures/CopyIcon.png";
+import axios from "axios";
 
 const CopyTextBlock = () => {
+  const [text, setText] = useState("");
 
-    const [text, setText] = useState('');
+  useEffect(() => {
+    const fetchPublicKey = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8080/rsa/public", {
+          responseType: "text",
+        });
+        setText(response.data); // Set PEM text directly
+      } catch (error) {
+        console.error(
+          "There was a problem with the Axios operation:",
+          error.message
+        );
+      }
+    };
 
-    useEffect(() => {
-        const fetchPublicKey = async () => {
-          try {
-            // Use axios.get to fetch data
-            const response = await axios.get('http://127.0.0.1:8080/rsa/public');
-            // With Axios, the response data is directly available via response.data
-            const data = response.data;
-            // Constructing the public key text from the modulus and exponent
-            const publicKeyText = `Modulus: ${data.modulus}\nExponent: ${data.exponent}`;
-            setText(publicKeyText);
-          } catch (error) {
-            // Axios wraps the error in an Error object and the actual error is available at error.response
-            console.error('There was a problem with the Axios operation:', error.message);
-          }
-        };
-        fetchPublicKey();
-      }, []);
-    
+    fetchPublicKey();
+  }, []);
 
   const copyTextToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(text);
-      alert('Text copied to clipboard!');
+      alert("Text copied to clipboard!");
     } catch (err) {
-      alert('Failed to copy text: ', err);
+      alert("Failed to copy text: ", err);
     }
   };
 
@@ -41,7 +38,7 @@ const CopyTextBlock = () => {
     <div className={styles.container}>
       <span className={styles.text}>{text}</span>
       <button onClick={copyTextToClipboard} className={styles.copyButton}>
-        <img src={CopyIcon} style={{ width: '100%', height: '100%' }} />
+        <img src={CopyIcon} style={{ width: "100%", height: "100%" }} />
       </button>
     </div>
   );

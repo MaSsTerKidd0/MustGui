@@ -197,3 +197,16 @@ ul {
     );
   }
 }
+.logoutButton {
+  background-color: #ff4d4d; /* Red color */
+  color: #fff; /* White text */
+  padding: 10px 20px; /* Increase padding for a larger button */
+  border-radius: 20px; /* Curved edges */
+  font-weight: bold; /* Bold text */
+  text-decoration: none; /* Remove underline */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.logoutButton:hover {
+  background-color: #ff6b6b; /* Slightly darker red on hover */
+}
