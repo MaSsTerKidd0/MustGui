@@ -133,3 +133,60 @@
   border: 1px solid #ffffff; /* White border for definition */
   transition: all 0.3s ease; /* Smooth transition for any changes */
 }
+.configTableContainer {
+  max-height: 50vh; /* Maximum height set to 50% of the viewport height */
+  overflow-y: auto; /* Enables vertical scrolling when content overflows */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  margin: 1vh auto; /* Centering the table with a vertical margin */
+  width: 100%;
+}
+
+.configTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.configTable th,
+.configTable td {
+  border: 2px solid #ddd; /* Lighter border for a less heavy look */
+  padding: 12px 15px; /* Adequate padding for text */
+  text-align: left; /* Aligns text to the left */
+  font-size: 16px; /* Standard text size for readability */
+}
+
+.configTable th {
+  background-color: #007acc; /* Theme color for headers */
+  color: white; /* White text for contrast */
+  font-weight: bold; /* Bold font for headers */
+}
+
+.configTable tr {
+  background-color: #f9f9f9; /* Light zebra striping for rows */
+}
+
+.configTable tr:hover {
+  background-color: #f1f1f1; /* Hover effect for rows */
+  cursor: pointer; /* Indicates the row can be interacted with */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .configTable,
+  .configTable th,
+  .configTable td {
+    font-size: 14px; /* Smaller font size for small devices */
+  }
+}
+
+.chartPopupOverlay {
+  position: absolute; /* Position it relative to the nearest positioned ancestor */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 10; /* Make sure it's above the table */
+}

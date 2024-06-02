@@ -17,8 +17,7 @@ function Navbar() {
         // Decode token using jsonwebtoken; no key needed as we are not verifying
         const decodedToken = jwt.decode(token);
         if (decodedToken) {
-          setRole(decodedToken.role); // Make sure your token has 'role' in its payload
-          console.log("Decoded Payload:", decodedToken);
+          setRole(decodedToken.role);
         }
       } catch (error) {
         console.error("Failed to decode token:", error);

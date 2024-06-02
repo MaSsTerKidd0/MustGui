@@ -122,8 +122,7 @@ const ConfigPage = () => {
   return (
     <div className={styles.confPage}>
       <Navbar />
-      <CopyTextBlock/>
-      <GenerateButton/>
+      <CopyTextBlock />
       <div className={styles.oldConfigurations}>
         <ScrollableList items={items} onItemSelected={handleItemSelected} />
         <div className={styles.buttonSection}>

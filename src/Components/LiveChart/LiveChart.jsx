@@ -14,6 +14,7 @@ import styles from "./LiveChart.module.css";
 const LiveChart = ({ network, networkName }) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
+  const maxDataPoints = 25; // Maximum data points to show on the chart at any time
 
   const fetchData = async () => {
     try {
@@ -43,12 +44,23 @@ const LiveChart = ({ network, networkName }) => {
           return;
       }
       console.log("Fetched data:", response.data); // Add this log
-      setData(response.data);
+      updateChartData(response.data);
       setError(null);
     } catch (error) {
       console.error("Error fetching data:", error);
       setError("Cannot load chart");
     }
+  };
+
+  const updateChartData = (newData) => {
+    setData((currentData) => {
+      let updatedData = [...currentData, ...newData];
+      // Keep only the last maxDataPoints elements
+      if (updatedData.length > maxDataPoints) {
+        updatedData = updatedData.slice(updatedData.length - maxDataPoints);
+      }
+      return updatedData;
+    });
   };
 
   useEffect(() => {
@@ -71,8 +83,6 @@ const LiveChart = ({ network, networkName }) => {
     <div className={styles.chartContainer}>
       <h2 className={styles.chartTitle}>{networkName}</h2>
       <ResponsiveContainer width="100%" height="100%">
-        {" "}
-        {/* Set height to 100% */}
         <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />
           <XAxis dataKey="time" stroke="#666" />
